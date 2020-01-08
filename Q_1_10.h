@@ -27,7 +27,9 @@ public:
 		imgWidth = imgSrc.cols;
 		imgHeight = imgSrc.rows;
 
+		//构建图片矩阵,CV_8UC3:uchar 8bit depth:3
 		Mat imgOut = Mat::zeros(imgHeight, imgWidth, CV_8UC3);
+
 		//遍历图片：从左到右，从上到下
 		for (int y = 0; y < imgHeight; y++) 
 		{
