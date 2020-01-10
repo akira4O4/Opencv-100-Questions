@@ -289,6 +289,33 @@ public:
 		waitKey(0);
 		destroyAllWindows();
 	}
+
+	void A6(void)
+	{
+		//256x256x256x3-->AxAxAx3
+		printf_s("减色处理");
+		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nana.jpg");
+		int imgHeight = imgSrc.rows;
+		int imgWeight = imgSrc.cols;
+		int channel = imgSrc.channels();//色彩通道
+		Mat imgOut = Mat::zeros(imgHeight,imgWeight,CV_8UC3);
+		int n = 64;//减色因子
+		for (int y=0;y<imgHeight;++y)
+		{
+			for (int x=0;x<imgWeight;++x )
+			{
+				//取每个通道的1/n
+				for (int c=0;c<channel;++c)
+				{
+					imgOut.at<Vec3b>(y, x)[c] = (uchar)(imgSrc.at<Vec3b>(y,x)[c]/n);
+				}
+			}
+		}
+		imshow("imgSrc", imgSrc);
+		imshow("imgOut", imgOut);
+		waitKey(0);
+		destroyAllWindows();
+	}
 };
 
 #endif // ! _Q_1_10_
