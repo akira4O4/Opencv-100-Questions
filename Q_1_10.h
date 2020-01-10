@@ -120,12 +120,14 @@ public:
 	{
 		printf_s("大津二值化算法");
 		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
-		Mat API = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
+		//Mat API = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
 
 		int imgHeight = imgSrc.rows;
 		int imgWeight = imgSrc.cols;
-		Mat imgGray = Mat::zeros(imgHeight,imgWeight,CV_8UC1);
+
+		Mat imgGray = Mat::zeros(imgHeight, imgWeight, CV_8UC1);
 		Mat imgOut = Mat::zeros(imgHeight, imgWeight, CV_8UC1);
+
 		//灰度化
 		for (int y = 0; y < imgHeight; ++y)
 		{
@@ -136,57 +138,79 @@ public:
 					+ 0.299 * (float)imgSrc.at<Vec3b>(y, x)[0];
 			}
 		}
+
+		const int grayScale = 256;//灰度值
 		
-		double w0, w1;//前景/背景像素占比
+		int pixelCount[grayScale] = { 0 };//灰度直方图
+		float pixelPro[grayScale] = { 0 };//各个灰度值占总体的比例
+
+		double w0, w1;//背景/前景像素占比
 		double u0, u1;//前景/背景平均灰度值
-		int val = 0;
+		double p0, p1;
 		double g = 0;//类间方差
+		
 		double max_g = 0;//最大类间方差
 		double good_k = 0;//最优阈值
 		int pixelSum = imgHeight * imgWeight;//总像素值
 
-		for (int k=0;k<255;k++)
+		//统计图片中各个灰度值的个数
+		for (int y = 0; y < imgHeight; ++y)
 		{
-			w0 = w1 = u0 = u1 = 0;
-			for (int y = 0; y < imgHeight; ++y)
+			for (int x = 0; x < imgWeight; ++x)
 			{
-				for (int x = 0; x < imgWeight; ++x)
+				int val = imgGray.at<uchar>(y, x);
+				pixelCount[val]++;
+			}
+		}
+
+		//统计图片中各个灰度值所占的比例
+		for (int i = 0; i < grayScale; ++i)
+		{
+			pixelPro[i] = 1.0 * pixelCount[i] / pixelSum;
+		}		
+
+		//k:暂定阈值(0-255)
+		for (int k = 0; k < grayScale; ++k)
+		{
+			w0 = w1 = u0 = u1 = g = 0;
+			p0 = p1 = 0;
+			//前景，背景区分 [0-k][k+1-255]
+			for (int i = 0; i < grayScale; ++i)
+			{
+				//如果当前像素值小于阈值k则属于背景，反之属于前景
+				if (i <= k)
 				{
-					//获取灰度值
-					val = (int)imgGray.at<uchar>(y,x);
-					//如果灰度值小于（当前）阈值k则属于背景，反之属于目标
-					if (val<k)
-					{
-						w0++;
-						u0 += val;	
-					}
-					else
-					{
-						w1++;
-						u1 += val;
-					}
+					//计算背景像素占比
+					w0 += pixelPro[i];
+					//计算当前灰度值发生的概率:灰度值*灰度值发生的概率
+					p0 += (i * pixelPro[i]);
+
+				}
+				else
+				{
+					//计算背景像素占比
+					w1 += pixelPro[i];
+					p1 += (i * pixelPro[i]);
 				}
 			}
-
-			//灰度均值
-			u0 = u0 / w0;
-			u1 = u1 / w1;
-
-			//统计两部分图片像素各占总图片的比例
-			w0 = w0 / (imgHeight * imgWeight);
-			w1 = w1 / (imgHeight * imgWeight);
-
-			g = w0 * w1 * pow((u0 - u1), 2);
+			//计算平均灰度值：p0/w0
+			u0 = p0 / w0;
+			u1 = p1 / w1;
+			//计算类内方差
+			g = (float)(w0 * w1 * pow((u0 - u1), 2));
 			if (g > max_g)
 			{
 				max_g = g;
 				good_k = k;
+
 			}
 		}
+		printf_s("good k;%f\n",good_k);
+
 		//取得最好的k值，以k值作为阈值进行二值化
-		for(int y=0;y<imgHeight;++y)
+		for (int y = 0; y < imgHeight; ++y)
 		{
-			for (int x=0;x<imgWeight;++x)
+			for (int x = 0; x < imgWeight; ++x)
 			{
 				if (imgGray.at<uchar>(y, x) > good_k)
 					imgOut.at<uchar>(y, x) = 255;
@@ -194,10 +218,10 @@ public:
 					imgOut.at<uchar>(y, x) = 0;
 			}
 		}
-		imshow("imgSrc",imgSrc);
-		imshow("imgGray",imgGray);
-		imshow("ostu",imgOut);
-		imshow("API",API);
+		imshow("imgSrc", imgSrc);
+		imshow("imgGray", imgGray);
+		imshow("ostu", imgOut);
+		//imshow("API", API);
 		waitKey(0);
 		destroyAllWindows();
 	}
