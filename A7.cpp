@@ -9,7 +9,7 @@ void A7(void)
 {
 	printf_s("将图片按照固定大小网格分割，网格内的像素值取网格内所有像素的平均值");
 	//注意这里需要使用偶数尺寸的图片：128x128池化范围和步数应该满足倍数关系
-	Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img2.jpg");
+	Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img3.jpg");
 	int imgHeight = imgSrc.rows;
 	int imgWidth = imgSrc.cols;
 	int channel = imgSrc.channels();
