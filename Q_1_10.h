@@ -24,7 +24,7 @@ public:
 
 		printf_s("//读取图像，然后将{RGB}通道替换成{BGR}通道\n");
 
-		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
+		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img1.jpg");
 		imgWidth = imgSrc.cols;
 		imgHeight = imgSrc.rows;
 
@@ -58,7 +58,7 @@ public:
 	void A2(void)
 	{
 		printf_s("计算图片灰度");
-		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
+		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img1.jpg");
 		int imgWeight = imgSrc.cols;
 		int imgHeight = imgSrc.rows;
 		Mat imgOut = Mat::zeros(imgHeight, imgWeight, CV_8UC1);
@@ -81,7 +81,7 @@ public:
 	void A3(int th)
 	{
 		printf_s("把图像进行二值化");
-		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
+		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img1.jpg");
 		int imgHeight = imgSrc.rows;
 		int imgWeight = imgSrc.cols;
 		Mat imgOut = Mat::zeros(imgHeight, imgWeight, CV_8UC1);
@@ -119,8 +119,8 @@ public:
 	void A4(void)
 	{
 		printf_s("大津二值化算法");
-		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
-		//Mat API = imread("C:\\Users\\Administrator\\Desktop\\nanasai1.jpg");
+		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img1.jpg");
+		//Mat API = imread("C:\\Users\\Administrator\\Desktop\\img1.jpg");
 
 		int imgHeight = imgSrc.rows;
 		int imgWeight = imgSrc.cols;
@@ -228,7 +228,7 @@ public:
 
 	void A5(void)
 	{
-		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nana.jpg");
+		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img2.jpg");
 		printf_s("RGB-->HSV");
 		int imgHeight = imgSrc.rows;
 		int imgWeight = imgSrc.cols;
@@ -256,7 +256,7 @@ public:
 				}
 				else if (Cmin == B)
 				{
-					H = 0.6 * (((G - B) / delta) + 0); 
+					H = 0.6 * (((G - B) / delta) + 0);
 					//H=60 * (G - R) / delta+60;
 				}
 				else if (Cmin == R)
@@ -284,7 +284,7 @@ public:
 				imgOut.at<Vec3f>(y, x)[2] = V;
 			}
 		}
-		imshow("imgSrc",imgSrc);
+		imshow("imgSrc", imgSrc);
 		imshow("imgOut", imgOut);
 		waitKey(0);
 		destroyAllWindows();
@@ -292,25 +292,30 @@ public:
 
 	void A6(void)
 	{
-		//256x256x256x3-->AxAxAx3
+		/*原理：
+		假设N是减色因子，将图像中每个像素的值除以NN(使用整数除法，不保留余数。实际上，该算法就是利用了整数除法的特性来实现减色的)。然后将结果乘以NN，得到NN的倍数，再加上N / 2N / 2，就得到相邻的NN的倍数之间的中间值。对所有8位通道值重复这个过程，就会得到(256 / N)∗(256 / N)∗(256 / N)(256 / N)∗(256 / N)∗(256 / N)种可能的颜色值。
+		*/
 		printf_s("减色处理");
-		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\nana.jpg");
+		Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img2.jpg");
 		int imgHeight = imgSrc.rows;
 		int imgWeight = imgSrc.cols;
 		int channel = imgSrc.channels();//色彩通道
-		Mat imgOut = Mat::zeros(imgHeight,imgWeight,CV_8UC3);
+		Mat imgOut = Mat::zeros(imgHeight, imgWeight, CV_8UC3);
 		int n = 64;//减色因子
-		for (int y=0;y<imgHeight;++y)
+
+		for (int y = 0; y < imgHeight; ++y)
 		{
-			for (int x=0;x<imgWeight;++x )
+			for (int x = 0; x < imgWeight; ++x)
 			{
 				//取每个通道的1/n
-				for (int c=0;c<channel;++c)
+				for (int c = 0; c < channel; ++c)
 				{
-					imgOut.at<Vec3b>(y, x)[c] = (uchar)(imgSrc.at<Vec3b>(y,x)[c]/n);
+					//floor:向下取整
+					imgOut.at<Vec3b>(y, x)[c] = (uchar)(floor((double)imgSrc.at<Vec3b>(y, x)[c] / n) * n + n/2);
 				}
 			}
 		}
+		printf_s("");
 		imshow("imgSrc", imgSrc);
 		imshow("imgOut", imgOut);
 		waitKey(0);
