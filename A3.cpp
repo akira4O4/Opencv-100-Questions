@@ -37,6 +37,7 @@ void A3(int th)
 
 		}
 	}
+
 	imshow("imgSrc", imgSrc);
 	imshow("imgOut", imgOut);
 	waitKey(0);
