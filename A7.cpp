@@ -49,6 +49,7 @@ void A7(void)
 
 	imshow("src", imgSrc);
 	imshow("out",imgOut);
+
 	waitKey(0);
 	destroyAllWindows();
 
