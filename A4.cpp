@@ -106,6 +106,7 @@ void A4(void)
 				imgOut.at<uchar>(y, x) = 0;
 		}
 	}
+
 	imshow("imgSrc", imgSrc);
 	imshow("imgGray", imgGray);
 	imshow("ostu", imgOut);
