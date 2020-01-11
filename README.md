@@ -14,9 +14,9 @@
 
 ## 重要算法解析：
 ### 一维高斯分布
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/tree/master/images/一维高斯分布.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/一维高斯分布.png)
 ### 二维高斯分布
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/tree/master/images/二维高斯分布.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/二维高斯分布.png)
 ### 最大类内方差
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/tree/master/images/最大类内方差1.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/tree/master/images/最大类内方差2.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/最大类内方差1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/最大类内方差2.png)
