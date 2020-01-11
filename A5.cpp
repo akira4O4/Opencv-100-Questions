@@ -11,6 +11,7 @@ void A5(void)
 	int imgHeight = imgSrc.rows;
 	int imgWeight = imgSrc.cols;
 	Mat imgOut = Mat::zeros(imgHeight, imgWeight, CV_32FC3);
+
 	float R, G, B;
 	float H, S, V;
 	float Cmax, Cmin, delta;
