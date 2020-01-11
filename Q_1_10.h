@@ -6,8 +6,6 @@
 #include <iostream>
 #include <stdio.h>
 
-
-
 void A1(void);
 void A2(void);
 void A3(int th);
