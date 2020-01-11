@@ -31,8 +31,8 @@ void A1(void)
 			imgOut.at<Vec3b>(y, x)[2] = imgSrc.at<Vec3b>(y, x)[0];
 		}
 	}
-	printf_s("imgWidth:%d\n", imgWidth);
-	printf_s("imgHeight:%d\n", imgHeight);
+	/*printf_s("imgWidth:%d\n", imgWidth);
+	printf_s("imgHeight:%d\n", imgHeight);*/
 
 	imshow("imgSrc(RGB)", imgSrc);
 	imshow("imgOut(BGR)", imgOut);
