@@ -5,7 +5,6 @@
 using namespace cv;
 void A2(void)
 {
-
 	printf_s("º∆À„Õº∆¨ª“∂»");
 	Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img1.jpg");
 	int imgWeight = imgSrc.cols;
