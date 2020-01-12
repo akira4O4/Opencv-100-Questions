@@ -8,7 +8,7 @@ using namespace cv;
 void A9(void)
 {
 	printf_s("高斯滤波\n");
-	Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\img3.jpg");
+	Mat imgSrc = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img512.png");
 	int imgHeight = imgSrc.rows;
 	int imgWidth = imgSrc.cols;
 	int channel = imgSrc.channels();
@@ -53,7 +53,7 @@ void A9(void)
 	//归一化卷积核，使得所有权值之和为1
 	for (int y = 0; y < kernelSize; y++) {
 		for (int x = 0; x < kernelSize; x++) {
-			kernel[y][x] = kernel[y][x]/ kernelSum;
+			kernel[y][x] = kernel[y][x] / kernelSum;
 			sum += kernel[y][x];
 		}
 	}
@@ -70,6 +70,13 @@ void A9(void)
 		printf_s("\n");
 	}
 
+	Mat imgtemp = Mat::zeros(imgHeight + 2 * kernelRadius, imgWidth + 2 * kernelRadius, CV_8UC3);
+	//复制一张原图，并且添加边框
+	for (int y = 0; y < imgHeight; y++)
+		for (int x = 0; x < imgWidth; x++)
+			for (int c = 0; c < channel; c++)
+				imgtemp.at<Vec3b>(y + kernelRadius, x + kernelRadius)[c] = imgSrc.at<Vec3b>(y, x)[c];
+
 	//使用卷积核对源图像进行高斯滤波
 	for (int y = 0; y < imgHeight; ++y)
 	{
@@ -79,26 +86,16 @@ void A9(void)
 			{
 				double val = 0;
 				for (int dy = -kernelRadius; dy < kernelRadius + 1; dy++)
-				{
 					for (int dx = -kernelRadius; dx < kernelRadius + 1; dx++)
-					{
 						//防止越界
 						if (((y + dy) >= 0) && ((x + dx) >= 0))
-						{
-							val += (double)imgSrc.at<Vec3b>(y + dy, x + dx)[c] * kernel[dy + kernelRadius][dx + kernelRadius];
-
-
-						}
-					}
-				}
+							val += (double)imgtemp.at<Vec3b>(y + dy, x + dx)[c] * kernel[dy + kernelRadius][dx + kernelRadius];
 				imgOut.at<Vec3b>(y, x)[c] = val;
 			}
 		}
 	}
-
 	imshow("src", imgSrc);
 	imshow("out", imgOut);
-
 	waitKey(0);
 	destroyAllWindows();
 }
