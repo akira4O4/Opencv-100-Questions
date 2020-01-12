@@ -6,14 +6,14 @@
 using namespace cv;
 
 void A11(Mat);
-void A12(void);
-void A13(void);
-void A14(void);
-void A15(void);
-void A16(void);
-void A17(void);
-void A18(void);
-void A19(void);
-void A20(void);
+void A12(Mat);
+void A13(Mat);
+void A14(Mat);
+void A15(Mat);
+void A16(Mat);
+void A17(Mat);
+void A18(Mat);
+void A19(Mat);
+void A20(Mat);
 
 #endif
