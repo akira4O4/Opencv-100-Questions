@@ -85,7 +85,7 @@ void A9(void)
 						//·ÀÖ¹Ô½½ç
 						if (((y + dy) >= 0) && ((x + dx) >= 0))
 						{
-							/*val += (double)imgSrc.at<Vec3b>(y + dy, x + dx)[c] * kernel[dy + kernelRadius][dx + kernelRadius];*/
+							val += (double)imgSrc.at<Vec3b>(y + dy, x + dx)[c] * kernel[dy + kernelRadius][dx + kernelRadius];
 
 
 						}
