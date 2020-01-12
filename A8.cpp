@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
 #include<math.h>
-#include "Q_1_10.h"
+#include "A_1_10.h"
 
 using namespace cv;
 
