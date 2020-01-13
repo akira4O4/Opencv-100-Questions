@@ -26,7 +26,8 @@ int main()
 	//A12(imgSrc1);
 	//A13(imgSrc512);
 	//A14(imgSrc512);
-	A15(imgSrc512);
+	//A15(imgSrc512);
+	A16(imgSrc512);
 
 	return 0;
 }
