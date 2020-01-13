@@ -49,10 +49,4 @@ void A20(Mat img)
 	{
 		printf_s("%d-->%f\n",i,pixelPro[i]*1000);
 	}
-
-
-	//imshow("imgSrc", imgSrc);
-	//imshow("imgGray", imgOut);
-	//waitKey(0);
-	//destroyAllWindows();
 }
