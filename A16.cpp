@@ -32,11 +32,7 @@ void A16(Mat img)
 	//卷积半径
 	int kRadius = floor((double)kSize / 2);//卷积半径
 	//卷积核
-	/*
-	[0,-1,0]
-	[0,-1,1]
-	[0,0,0]
-	*/
+
 	//设置卷积核:水平
 	double kPrewittHorizontal[kSize][kSize] = { {-1, 0, 1}, {-1, 0, 1}, {-1, 0, 1} };
 
