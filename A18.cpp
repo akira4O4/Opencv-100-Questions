@@ -30,13 +30,7 @@ void A18(Mat img)
 	const int kSize = 3;
 	//卷积半径
 	int kRadius = floor((double)kSize / 2);//卷积半径
-	//卷积核
-	/*
-	[0,-1,0]
-	[0,-1,1]
-	[0,0,0]
-	*/
-	//设置卷积核:水平
+
 	double kEmboss[kSize][kSize] = { {-2, -1, 0}, {-1, 1, 1}, {0, 1, 2} };
 
 
