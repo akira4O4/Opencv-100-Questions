@@ -37,7 +37,7 @@ void A17(Mat img)
 	[0,0,0]
 	*/
 	//设置卷积核:水平
-	double kLaplacianHorizontal[kSize][kSize] = { {0, 1, 0}, {1, -4, 1}, {0, 1, 0} };
+	double kLaplacian[kSize][kSize] = { {0, 1, 0}, {1, -4, 1}, {0, 1, 0} };
 
 
 	for (int y = 0; y < imgHeight; ++y)
@@ -51,7 +51,7 @@ void A17(Mat img)
 				{
 					if (((y + dy >= 0)) && (x + dx) >= 0 && ((y + dy) < imgHeight) && ((x + dx) < imgWidth))
 					{
-						val += imgGray.at<uchar>(y + dy, x + dx) * kLaplacianHorizontal[kRadius + dy][kRadius + dx];
+						val += imgGray.at<uchar>(y + dy, x + dx) * kLaplacian[kRadius + dy][kRadius + dx];
 					}
 
 				}
