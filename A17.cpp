@@ -33,7 +33,6 @@ void A17(Mat img)
 	//¾í»ýºË
 	double kLaplacian[kSize][kSize] = { {0, 1, 0}, {1, -4, 1}, {0, 1, 0} };
 
-
 	for (int y = 0; y < imgHeight; ++y)
 	{
 		for (int x = 0; x < imgWidth; ++x)
