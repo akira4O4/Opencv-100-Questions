@@ -38,10 +38,10 @@ void A16(Mat img)
 	[0,0,0]
 	*/
 	//设置卷积核:水平
-	double kSobelHorizontal[kSize][kSize] = { {-1, 0, 1}, {-1, 0, 1}, {-1, 0, 1} };
+	double kPrewittHorizontal[kSize][kSize] = { {-1, 0, 1}, {-1, 0, 1}, {-1, 0, 1} };
 
 	//设置卷积核:垂直
-	double kSobelVertical[kSize][kSize] = { {-1, -1, -1}, {0, 0, 0}, {1, 1, 1} };
+	double kPrewittVertical[kSize][kSize] = { {-1, -1, -1}, {0, 0, 0}, {1, 1, 1} };
 
 	for (int y = 0; y < imgHeight; ++y)
 	{
@@ -55,8 +55,8 @@ void A16(Mat img)
 				{
 					if (((y + dy >= 0)) && (x + dx) >= 0 && ((y + dy) < imgHeight) && ((x + dx) < imgWidth))
 					{
-						valH += imgGray.at<uchar>(y + dy, x + dx) * kSobelHorizontal[kRadius + dy][kRadius + dx];
-						valV += imgGray.at<uchar>(y + dy, x + dx) * kSobelVertical[kRadius + dy][kRadius + dx];
+						valH += imgGray.at<uchar>(y + dy, x + dx) * kPrewittHorizontal[kRadius + dy][kRadius + dx];
+						valV += imgGray.at<uchar>(y + dy, x + dx) * kPrewittVertical[kRadius + dy][kRadius + dx];
 					}
 
 				}
