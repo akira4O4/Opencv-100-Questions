@@ -49,12 +49,12 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/屋顶效应.png)
 
 
-## 1-10题重要算法解析：
+## 11-20题重要算法解析：
 ### 均值滤波器
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/均值滤波卷积核.png)
 ### 运动滤波器
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/运动滤波器.png)
-### MAX-MIN滤波器
+### MAX-MIN滤波器(效果图)
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/max-min.png)
 ### 差分滤波器
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/垂直滤波器.png)
@@ -71,3 +71,5 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/Emboss算子.png)
 ### LoG滤波器
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/高斯拉普拉斯算子.png)
+### 直方图
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/直方图.png)
