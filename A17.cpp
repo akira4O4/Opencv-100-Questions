@@ -46,7 +46,6 @@ void A17(Mat img)
 					{
 						val += imgGray.at<uchar>(y + dy, x + dx) * kLaplacian[kRadius + dy][kRadius + dx];
 					}
-
 				}
 			}
 			imgOut.at<uchar>(y, x) = (uchar)val;
