@@ -34,7 +34,8 @@ int main()
 	//A18(imgSrc512);
 	//A19(imgSrc512);
 	//A20(imgSrc512);
-	A21(img_dark);
+	//A21(img_dark);
+	A22(img_dark);
 
 	return 0;
 }
