@@ -32,6 +32,7 @@ void A21(Mat img)
 	//新的像素范围(0-255)
 	int newStart = 0;
 	int newEnd = 255;
+
 	//判定赋值
 	for (int y = 0; y < imgHeight; ++y)
 	{
