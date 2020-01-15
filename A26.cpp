@@ -11,11 +11,11 @@ void A26(Mat img)
 	int imgHeight = imgSrc.rows;
 	int imgWidth = imgSrc.cols;
 	int channel = imgSrc.channels();
-	double val;
 
 	//缩放比例
-	double rx = 1.5;
-	double ry = 1.5;
+	double rx;
+	double ry;
+	rx = ry = 1.6666666666666666666;
 
 	//缩放后的宽高
 	int resizeHeight = (int)(imgHeight * ry);
@@ -26,9 +26,9 @@ void A26(Mat img)
 	printf_s("rh:%d,rw:%d\n", resizeHeight, resizeWidth);
 
 	//计算值
-	int xBefore,yBefore;
+	int xBefore, yBefore;
 	double dy, dx;
-
+	double val;
 	for (int y = 0; y < resizeHeight; ++y)
 	{
 		yBefore = (int)floor(y / ry);
@@ -52,7 +52,7 @@ void A26(Mat img)
 		}
 	}
 
-	imshow("imgSrc", imgSrc);
+	imshow("imgSrc", img);
 	imshow("imgOut", imgOut);
 	waitKey(0);
 	destroyAllWindows();
