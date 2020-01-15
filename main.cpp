@@ -38,7 +38,8 @@ int main()
 	//A21(img_dark);
 	//A22(img_dark);
 	//A23(img_dark);
-	A24(img_gamma);
+	//A24(img_gamma);
+	A25(imgSrc512);
 
 	return 0;
 }
