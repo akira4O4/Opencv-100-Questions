@@ -40,7 +40,8 @@ int main()
 	//A23(img_dark);
 	//A24(img_gamma);
 	//A25(imgSrc512);
-	A26(imgSrc512);
+	//A26(imgSrc512);
+	A27(imgSrc512);
 
 	return 0;
 }
