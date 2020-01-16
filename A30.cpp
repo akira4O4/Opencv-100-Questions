@@ -41,6 +41,7 @@ void A30(Mat img)
 		double det = a * d - b * c;
 
 		//计算平移参数：tx,ty
+		//因为旋转是绕左下角旋转，如果需要对图片中心旋转需要图片进行移动
 		double cx = imgWidth / 2;
 		double cy = imgHeight / 2;
 		double cxNew = (d * cx - b * cy) / det;
