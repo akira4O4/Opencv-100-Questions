@@ -43,7 +43,8 @@ int main()
 	//A26(imgSrc512);
 	//A27(imgSrc512);
 	//A28(imgSrc512);
-	A29(imgSrc512);
+	//A29(imgSrc512);
+	A30(imgSrc512);
 
 	return 0;
 }
