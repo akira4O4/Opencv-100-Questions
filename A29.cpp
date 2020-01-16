@@ -45,7 +45,7 @@ void A29(Mat img)
 				continue;
 			}
 
-			yBefore = (int)((-c * c + a * y) / det - ty);
+			yBefore = (int)((-c * x + a * y) / det - ty);
 			if ((yBefore) < 0 || (yBefore >= imgHeight))
 			{
 				continue;
