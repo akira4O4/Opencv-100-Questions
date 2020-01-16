@@ -23,7 +23,7 @@ double Bicubic(double x)
 // [*, *] -> [min, max]
 int ValueClip(int a, int min, int max)
 {
-	return fmin(fmin(a, min), max);
+	return fmin(fmax(a, min), max);
 }
 
 void A27(Mat img)
@@ -66,16 +66,15 @@ void A27(Mat img)
 				{
 					_y = ValueClip(yBefore+j, 0, imgHeight - 1);
 					weighty = Bicubic(fabs(dy - _y));
-
 					for (int i = -1; i < 3; i++)
 					{
 						_x = ValueClip(xBefore+i, 0, imgWidth - 1);
 						weightx = Bicubic(fabs(dx - _x));
-						weightSum += (weightx + weighty);
+						weightSum += weightx * weighty;
 						val += (double)img.at<Vec3b>(_y, _x)[c] * weightx * weighty;
 					}
 				}
-				//val /= weightSum;
+				val /= weightSum;
 				val = ValueClip(val, 0, 255);
 				imgOut.at<Vec3b>(y, x)[c] = (uchar)val;
 			}
