@@ -112,7 +112,7 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换2.png)
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换3.png)
 #### 平移量为0的仿射变换
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/平移量为0的仿射变换.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换4.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/平移量为0的仿射变换.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换4.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/放射变换5.png)
 
