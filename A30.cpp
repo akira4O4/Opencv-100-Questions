@@ -61,6 +61,7 @@ void A30(Mat img)
 	}
 
 	Mat imgOut = Mat::zeros(resizeHeight, resizeWidth, CV_8UC3);
+
 	int xBefore, yBefore;
 	double dx, dy;
 	double	weightx = 0, weighty = 0;
