@@ -4,6 +4,7 @@
 #include "A_1_10.h"
 #include "A_11_20.h"
 #include "A_21_30.h"
+#include "A_31_40.h"
 
 using namespace std;
 using namespace cv;
@@ -44,7 +45,7 @@ int main()
 	//A27(imgSrc512);
 	//A28(imgSrc512);
 	//A29(imgSrc512);
-	A30(imgSrc512);
+	//A30(imgSrc512);
 
 	return 0;
 }
