@@ -73,3 +73,46 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/高斯拉普拉斯算子.png)
 ### 直方图
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/直方图.png)
+
+## 21-30题的题目：
+### 11-20需要引入头文件：A_21_30.h
+- [直方图归一化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A21.cpp "直方图归一化")
+- [直方图操作](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A22.cpp "直方图操作")
+- [直方图均衡化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A23.cpp "直方图均衡化")
+- [伽玛校正](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A24.cpp "伽玛校正")
+- [最邻近插值](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A25.cpp "最邻近插值")
+- [双线性插值](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A26.cpp "双线性插值")
+- [双三次插值](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A27.cpp "双三次插值")
+- [仿射变换-平行移动](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A28.cpp "仿射变换-平行移动")
+- [仿射变换-放大缩小](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A29.cpp "仿射变换-放大缩小")
+- [仿射变换-旋转](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A30.cpp "仿射变换-旋转")
+
+## 21-30题重要算法解析：
+### 均值方差均方差
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/均值方差标准差.jpg)
+### 伽马矫正
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/伽马矫正.png)
+### 最邻近插值
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/最邻近插值.png)
+### 双线性插值
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/双线性插值1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/双线性插值2.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/双线性插值4.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/双线性插值3.png)
+### BiCubic函数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/BiCubic函数.png)
+### 双三次插值
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/双三次插值2.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/双三次插值1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/双三次插值5.png)
+### 齐次坐标系到笛卡尔坐标系转换
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/齐次到笛卡尔坐标.png)
+### 放射变换
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换2.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换3.png)
+#### 平移量为0的仿射变换
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/平移量为0的仿射变换.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换4.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/放射变换5.png)
+
