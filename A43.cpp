@@ -341,33 +341,38 @@ Mat _NMS_(Mat angle, Mat edge)
 	return imgOut;
 }
 
-Mat histerisis(Mat edge, int HT, int LT)
+Mat Histerisis(Mat edge, int HT, int LT)
 {
 	int imgHeight = edge.rows;
 	int imgWidth = edge.cols;
-	int channel = edge.channels();
 	Mat imgOut = Mat::zeros(imgHeight, imgWidth, CV_8UC1);
 
-	int nowPixel;
+	uchar nowPixel=0;
 
-	for (int y = 0; y < imgHeight; ++y)
+	for (int y = 0; y < imgHeight; y++)
 	{
-		for (int x = 0; y < imgWidth; ++x)
+		for (int x = 0; x < imgWidth; x++)
 		{
+			//printf_s("y:%d,x:%d\n", y, x);
 			nowPixel = edge.at<uchar>(y, x);
 			if (nowPixel >= HT)
 			{
 				imgOut.at<uchar>(y, x) = 255;
 			}
+
 			else if (nowPixel > LT)
 			{
 				for (int dy = -1; dy < 2; dy++)
 				{
 					for (int dx = -1; dx < 2; dx++)
 					{
+
 						if (edge.at<uchar>(fmin(fmax(y + dy, 0), 255), fmin(fmax(x + dx, 0), 255)) >= HT)
 						{
-							imgOut.at<uchar>(y, x) = 255;
+							if (((y + dy >= 0)) && (x + dx) >= 0 && ((y + dy) < imgHeight) && ((x + dx) < imgWidth))
+							{
+								imgOut.at<uchar>(y, x) = 255;
+							}
 						}
 					}
 				}
@@ -390,9 +395,9 @@ void A43(Mat img)
 	Mat edge = _GetEdge_(imgx, imgy);
 	Mat angel = _GetAngel_(imgx, imgy);
 	//非极大值抑制
-	edge = _NMS_(edge, angel);
+	edge = _NMS_(angel, edge);
 
-	edge = histerisis(edge,50,20);
+	edge = Histerisis(edge, 80, 20);
 
 	imshow("imgSrc", img);
 	imshow("edge", edge);
