@@ -2,6 +2,9 @@
 #include <opencv2/opencv.hpp>
 #ifndef _A_41_50_
 #define _A_41_50_
+
+#define PI  atan(1) * 4
+
 using namespace cv;
 
 void A41(Mat img);
