@@ -5,6 +5,7 @@
 #include "A_11_20.h"
 #include "A_21_30.h"
 #include "A_31_40.h"
+#include "A_41_50.h"
 
 using namespace std;
 using namespace cv;
@@ -49,7 +50,8 @@ int main()
 	//A29(imgSrc512);
 	//A30(imgSrc512);
 	//A31(imgSrc128);
-	A32(imgSrc128);
+	//A32(imgSrc128);
+	A41(imgSrc512);
 
 	return 0;
 }
