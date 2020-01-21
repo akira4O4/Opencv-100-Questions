@@ -7,9 +7,6 @@
 
 using namespace cv;
 
-//double PI = atan(1) * 4;
-
-
 float Clip(float value, float min, float max)
 {
 	return fmin(fmax(value, 0), 255);
