@@ -61,7 +61,7 @@ Mat _GaussianFilter(Mat img, double Sigma)
 		{
 			_y = y - kRadius;
 			_x = x - kRadius;
-			kernel[y][x] = (_x * _x + _y * _y - Sigma * Sigma) / (2 * _PI * pow(Sigma, 6)) * exp(-(_x * _x + _y * _y) / (2 * Sigma * Sigma));
+			kernel[y][x] = 1 / (2 * PI * Sigma * Sigma) * exp(-(_x * _x + _y * _y) / (2 * Sigma * Sigma));
 			kernel_sum += kernel[y][x];
 		}
 	}
@@ -146,8 +146,8 @@ Mat _SobelFilterV(Mat img)
 	{
 		for (int x = 0; x < imgWidth; ++x)
 		{
-			uchar valH = 0;
-			uchar valV = 0;
+			double valH = 0;
+			double valV = 0;
 			for (int dy = -kRadius; dy < kRadius + 1; dy++)
 			{
 				for (int dx = -kRadius; dx < kRadius + 1; dx++)
@@ -188,8 +188,8 @@ Mat _SobelFilterH(Mat img)
 	{
 		for (int x = 0; x < imgWidth; ++x)
 		{
-			uchar valH = 0;
-			uchar valV = 0;
+			double valH = 0;
+			double valV = 0;
 			for (int dy = -kRadius; dy < kRadius + 1; dy++)
 			{
 				for (int dx = -kRadius; dx < kRadius + 1; dx++)
