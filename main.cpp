@@ -19,6 +19,7 @@ int main()
 	Mat imgSrc256 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img256.png");
 	Mat img_dark = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img_dark.jpg");
 	Mat img_gamma = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\gamma.jpg");
+	Mat img_canny = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\canny2.png");
 	//A1();
 	//A2();
 	//A3();
@@ -53,8 +54,8 @@ int main()
 	//A32(imgSrc128);
 	//A41(imgSrc512);
 	//A42(imgSrc512);
-	//A43(imgSrc512);
-	A44(imgSrc512);
+	//A43(img_canny);
+	A44(img_canny);
 
 	return 0;
 }
