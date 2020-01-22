@@ -85,7 +85,7 @@ void A44(Mat img)
 	printf_s("初始化结束\n");
 
 	// 霍夫投票
-	//hough_table = Hough_vote(hough_table, edge);
+	hough_table = Hough_vote(hough_table, edge);
 
 	waitKey(0);
 	destroyAllWindows();
