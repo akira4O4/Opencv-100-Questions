@@ -57,7 +57,10 @@ int main()
 	//A43(img_canny);
 	//A44(img_canny);
 	//A45(img_canny);
-	A47(imgSrc512);
+	//A47(imgSrc512);
+	//A48(imgSrc512);
+	A49(imgSrc512);
+	//A50(imgSrc512);
 
 	return 0;
 }
