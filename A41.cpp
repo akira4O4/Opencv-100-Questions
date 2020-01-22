@@ -12,7 +12,7 @@ float Clip(float value, float min, float max)
 	return fmin(fmax(value, 0), 255);
 }
 
-//图像灰度化	
+//图像灰度化	 
 Mat ImgGray(Mat img)
 {
 	int imgHeight = img.rows;
@@ -29,7 +29,7 @@ Mat ImgGray(Mat img)
 				+ 0.0722 * (float)img.at<Vec3b>(y, x)[0];
 		}
 	}
-	imshow("imgGray", imgGray);
+	//imshow("imgGray", imgGray);
 	return imgGray;
 }
 //高斯滤波
@@ -58,7 +58,7 @@ Mat GaussianFilter(Mat img, double Sigma)
 		{
 			_y = y - kRadius;
 			_x = x - kRadius;
-			kernel[y][x] = (_x * _x + _y * _y - Sigma * Sigma) / (2 * PI * pow(Sigma, 6)) * exp(-(_x * _x + _y * _y) / (2 * Sigma * Sigma));
+			kernel[y][x] = 1 / (2 * PI * Sigma * Sigma) * exp(-(_x * _x + _y * _y) / (2 * Sigma * Sigma));
 			kernel_sum += kernel[y][x];
 		}
 	}
@@ -117,7 +117,7 @@ Mat GaussianFilter(Mat img, double Sigma)
 		}
 	}
 
-	imshow("imgGaussianOut", imgGaussianOut);
+	//imshow("imgGaussianOut", imgGaussianOut);
 	return imgGaussianOut;
 
 }
@@ -144,8 +144,7 @@ Mat SobelFilterV(Mat img)
 	{
 		for (int x = 0; x < imgWidth; ++x)
 		{
-			uchar valH = 0;
-			uchar valV = 0;
+			double valV = 0;
 			for (int dy = -kRadius; dy < kRadius + 1; dy++)
 			{
 				for (int dx = -kRadius; dx < kRadius + 1; dx++)
@@ -160,7 +159,7 @@ Mat SobelFilterV(Mat img)
 			imgOutV.at<uchar>(y, x) = (uchar)Clip(valV, 0, 255);
 		}
 	}
-	imshow("imgOutV", imgOutV);
+	//imshow("imgOutV", imgOutV);
 	return imgOutV;
 
 }
@@ -186,8 +185,7 @@ Mat SobelFilterH(Mat img)
 	{
 		for (int x = 0; x < imgWidth; ++x)
 		{
-			uchar valH = 0;
-			uchar valV = 0;
+			double valH = 0;
 			for (int dy = -kRadius; dy < kRadius + 1; dy++)
 			{
 				for (int dx = -kRadius; dx < kRadius + 1; dx++)
@@ -201,7 +199,7 @@ Mat SobelFilterH(Mat img)
 			imgOutH.at<uchar>(y, x) = (uchar)Clip(valH, 0, 255);
 		}
 	}
-	imshow("imgOutH", imgOutH);
+	//imshow("imgOutH", imgOutH);
 	return imgOutH;
 }
 
