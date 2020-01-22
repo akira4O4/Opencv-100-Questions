@@ -120,7 +120,7 @@
 ### 11-20需要引入头文件：A_31_40.h
 
 ## 41-50题的题目：
-### 11-20需要引入头文件：A_21_30.h
+### 11-20需要引入头文件：A_41_50.h
 - [Canny边缘检测：边缘强度](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A41.cpp "Canny边缘检测：边缘强度")
 - [Canny边缘检测：边缘细化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A42.cpp "Canny边缘检测：边缘细化")
 - [Canny 边缘检测：滞后阈值](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A43.cpp "Canny 边缘检测：滞后阈值")
