@@ -181,8 +181,8 @@ void A49(Mat img)
 	cv::imshow("imgSrc", img);
 	//cv::imshow("imgGray", imgGray);
 	//cv::imshow("imgBin", imgBin);
-	cv::imshow("imgDilate", imgDilate);
 	cv::imshow("imgErode", imgErode);
+	cv::imshow("imgDilate", imgDilate);
 	cv::waitKey(0);
 	cv::destroyAllWindows();
 }
