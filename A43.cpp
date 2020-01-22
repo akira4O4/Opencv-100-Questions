@@ -28,7 +28,6 @@ Mat _ImgGray_(Mat img)
 				+ 0.0722 * (float)img.at<Vec3b>(y, x)[0];
 		}
 	}
-	imshow("imgGray", imgGray);
 	return imgGray;
 }
 
@@ -116,10 +115,7 @@ Mat _GaussianFilter_(Mat img, double Sigma)
 			}
 		}
 	}
-
-	imshow("imgGaussianOut", imgGaussianOut);
 	return imgGaussianOut;
-
 }
 
 //Sobel filter
@@ -159,9 +155,7 @@ Mat _SobelFilterV_(Mat img)
 			imgOutV.at<uchar>(y, x) = (uchar)_Clip_(valV, 0, 255);
 		}
 	}
-	imshow("imgOutV", imgOutV);
 	return imgOutV;
-
 }
 //水平
 Mat _SobelFilterH_(Mat img)
@@ -200,7 +194,6 @@ Mat _SobelFilterH_(Mat img)
 			imgOutH.at<uchar>(y, x) = (uchar)_Clip_(valH, 0, 255);
 		}
 	}
-	imshow("imgOutH", imgOutH);
 	return imgOutH;
 }
 
@@ -383,25 +376,30 @@ Mat Histerisis(Mat edge, int HT, int LT)
 }
 void A43(Mat img)
 {
-	Mat out;
 	//图片灰度化
-	out = _ImgGray_(img);
+	Mat imgGray = _ImgGray_(img);
+
 	//高斯滤波
-	out = _GaussianFilter_(out, 1.4);
+	Mat imgGaussian = _GaussianFilter_(imgGray, 1.4);
 	//sobel filter:两个方向
-	Mat imgx = _SobelFilterH_(out);
-	Mat imgy = _SobelFilterV_(out);
+	Mat imgx = _SobelFilterH_(imgGaussian);
+	Mat imgy = _SobelFilterV_(imgGaussian);
 	//边，角
 	Mat edge = _GetEdge_(imgx, imgy);
 	Mat angel = _GetAngel_(imgx, imgy);
+
 	//非极大值抑制
 	edge = _NMS_(angel, edge);
-
+	//连接边
 	edge = Histerisis(edge, 80, 20);
 
 	imshow("imgSrc", img);
+	imshow("imgGray", imgGray);
+	imshow("imgGaussian", imgGaussian);
+	imshow("imgx", imgx);
+	imshow("imgy", imgy);
 	imshow("edge", edge);
-	imshow("angel", angel);
+	//imshow("angel", angel);
 	waitKey(0);
 	destroyAllWindows();
 }
