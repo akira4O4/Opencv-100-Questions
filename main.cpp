@@ -53,7 +53,8 @@ int main()
 	//A32(imgSrc128);
 	//A41(imgSrc512);
 	//A42(imgSrc512);
-	A43(imgSrc512);
+	//A43(imgSrc512);
+	A44(imgSrc512);
 
 	return 0;
 }
