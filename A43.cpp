@@ -43,6 +43,7 @@ Mat _GaussianFilter_(Mat img, double Sigma)
 		imgGaussianOut = Mat::zeros(imgHeight, imgWidth, CV_8UC1);
 	else
 		imgGaussianOut = Mat::zeros(imgHeight, imgWidth, CV_8UC3);
+
 	const int kSize = 5;
 
 	int kRadius = floor((double)kSize / 2);//卷积半径
@@ -57,7 +58,8 @@ Mat _GaussianFilter_(Mat img, double Sigma)
 		{
 			_y = y - kRadius;
 			_x = x - kRadius;
-			kernel[y][x] = (_x * _x + _y * _y - Sigma * Sigma) / (2 * PI * pow(Sigma, 6)) * exp(-(_x * _x + _y * _y) / (2 * Sigma * Sigma));
+
+			kernel[y][x] = 1 / (2 * PI * Sigma * Sigma) * exp(-(_x * _x + _y * _y) / (2 * Sigma * Sigma));
 			kernel_sum += kernel[y][x];
 		}
 	}
@@ -124,38 +126,37 @@ Mat _SobelFilterV_(Mat img)
 {
 	int imgHeight = img.rows;
 	int imgWidth = img.cols;
-	int channel = img.channels();
-	Mat imgOutV = Mat::zeros(imgHeight, imgWidth, CV_8UC1);
+
+	cv::Mat out = cv::Mat::zeros(imgHeight, imgWidth, CV_8UC1);
+	
 	const int kSize = 3;
-	//卷积半径
-	int kRadius = floor((double)kSize / 2);//卷积半径
-	//卷积核
-	//设置卷积核:垂直
-	double kSobelVertical[kSize][kSize] = { {1, 2, 1},
-											{0, 0, 0},
-											{-1, -2, -1} };
+	int kRadius = floor(kSize / 2);//卷积半径
+	// prepare kernel:垂直
+	double kernel[kSize][kSize] = { {1, 2, 1}, {0, 0, 0}, {-1, -2, -1} };
+
+	double v = 0;
 
 	for (int y = 0; y < imgHeight; ++y)
 	{
 		for (int x = 0; x < imgWidth; ++x)
 		{
-			uchar valH = 0;
-			uchar valV = 0;
+			double valV = 0;
 			for (int dy = -kRadius; dy < kRadius + 1; dy++)
 			{
 				for (int dx = -kRadius; dx < kRadius + 1; dx++)
 				{
 					if (((y + dy >= 0)) && (x + dx) >= 0 && ((y + dy) < imgHeight) && ((x + dx) < imgWidth))
 					{
-						valV += img.at<uchar>(y + dy, x + dx) * kSobelVertical[kRadius + dy][kRadius + dx];
+						valV += (double)img.at<uchar>(y + dy, x + dx) * kernel[kRadius + dy][kRadius + dx];
 					}
-
 				}
 			}
-			imgOutV.at<uchar>(y, x) = (uchar)_Clip_(valV, 0, 255);
+			out.at<uchar>(y, x) = (uchar)_Clip_(valV, 0, 255);
 		}
 	}
-	return imgOutV;
+	return out;
+
+
 }
 //水平
 Mat _SobelFilterH_(Mat img)
@@ -179,15 +180,14 @@ Mat _SobelFilterH_(Mat img)
 	{
 		for (int x = 0; x < imgWidth; ++x)
 		{
-			uchar valH = 0;
-			uchar valV = 0;
+			double valH = 0;
 			for (int dy = -kRadius; dy < kRadius + 1; dy++)
 			{
 				for (int dx = -kRadius; dx < kRadius + 1; dx++)
 				{
 					if (((y + dy >= 0)) && (x + dx) >= 0 && ((y + dy) < imgHeight) && ((x + dx) < imgWidth))
 					{
-						valH += img.at<uchar>(y + dy, x + dx) * kSobelHorizontal[kRadius + dy][kRadius + dx];
+						valH += (double)img.at<uchar>(y + dy, x + dx) * kSobelHorizontal[kRadius + dy][kRadius + dx];
 					}
 				}
 			}
@@ -208,8 +208,8 @@ Mat _GetEdge_(Mat imgX, Mat imgY)
 	{
 		for (int x = 0; x < imgWidth; ++x)
 		{
-			fx = imgX.at<uchar>(y, x);
-			fy = imgY.at<uchar>(y, x);
+			fx = (double)imgX.at<uchar>(y, x);
+			fy = (double)imgY.at<uchar>(y, x);
 			imgOut.at<uchar>(y, x) = (uchar)_Clip_(sqrt(fx * fx + fy * fy), 0, 255);
 		}
 	}
@@ -340,7 +340,7 @@ Mat Histerisis(Mat edge, int HT, int LT)
 	int imgWidth = edge.cols;
 	Mat imgOut = Mat::zeros(imgHeight, imgWidth, CV_8UC1);
 
-	uchar nowPixel=0;
+	uchar nowPixel = 0;
 
 	for (int y = 0; y < imgHeight; y++)
 	{
@@ -359,13 +359,9 @@ Mat Histerisis(Mat edge, int HT, int LT)
 				{
 					for (int dx = -1; dx < 2; dx++)
 					{
-
 						if (edge.at<uchar>(fmin(fmax(y + dy, 0), 255), fmin(fmax(x + dx, 0), 255)) >= HT)
 						{
-							if (((y + dy >= 0)) && (x + dx) >= 0 && ((y + dy) < imgHeight) && ((x + dx) < imgWidth))
-							{
-								imgOut.at<uchar>(y, x) = 255;
-							}
+							imgOut.at<uchar>(y, x) = 255;
 						}
 					}
 				}
@@ -381,6 +377,7 @@ void A43(Mat img)
 
 	//高斯滤波
 	Mat imgGaussian = _GaussianFilter_(imgGray, 1.4);
+
 	//sobel filter:两个方向
 	Mat imgx = _SobelFilterH_(imgGaussian);
 	Mat imgy = _SobelFilterV_(imgGaussian);
@@ -395,11 +392,12 @@ void A43(Mat img)
 
 	imshow("imgSrc", img);
 	imshow("imgGray", imgGray);
+
 	imshow("imgGaussian", imgGaussian);
 	imshow("imgx", imgx);
 	imshow("imgy", imgy);
 	imshow("edge", edge);
-	//imshow("angel", angel);
+	imshow("angel", angel);
 	waitKey(0);
 	destroyAllWindows();
 }
