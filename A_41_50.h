@@ -24,6 +24,7 @@ Mat NMS(Mat angle, Mat edge);
 //Á¬½Ó±ß
 Mat Histerisis(Mat edge, int HT, int LT);
 
+
 void A41(Mat img);
 void A42(Mat img);
 void A43(Mat img);
