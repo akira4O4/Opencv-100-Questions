@@ -31,7 +31,7 @@ void A54(Mat img1, Mat img2)
 	{
 		for (int x = 0; x < imgWeight - imgw; ++x)
 		{
-			printf_s("y:%d,x:%d\n", y, x);
+			//printf_s("y:%d,x:%d\n", y, x);
 			int ssd = 0;
 			Mat temp = img1.clone();
 
@@ -54,6 +54,7 @@ void A54(Mat img1, Mat img2)
 					}
 				}
 			}
+			printf_s("Æ¥Åä×ø±ê£ºy:%d,x:%d SSD:%d\n", Y, X, ssd);
 			if (ssd < SSD)
 			{
 				SSD = ssd;
@@ -61,9 +62,11 @@ void A54(Mat img1, Mat img2)
 				X = x;
 				if (SSD == 0)
 				{
-					//flag = true;
+					flag = true;
 				}
 			}
+			if (flag)
+				break;
 		}
 		if (flag)
 			break;
