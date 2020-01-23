@@ -7,7 +7,7 @@
 
 using namespace cv;
 
-//开运算：先膨胀再腐蚀
+//闭运算：先膨胀再腐蚀
 void A50(Mat img)
 {
 	int imgHeight = img.rows;
