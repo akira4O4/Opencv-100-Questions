@@ -13,14 +13,23 @@ using namespace cv;
 
 int main()
 {
-	Mat imgSrc1 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img3.jpg");
-	Mat imgSrc512 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img512.png");
 	Mat imgSrc32 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img32.png");
 	Mat imgSrc128 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img128.png");
 	Mat imgSrc256 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img256.png");
+	Mat imgSrc256part = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img256_part.png");
+	Mat imgSrc512 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img512.png");
+	
+	
 	Mat img_dark = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img_dark.jpg");
 	Mat img_gamma = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\gamma.jpg");
 	Mat img_canny = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\canny2.png");
+
+	Mat imori = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\imori.jpg");
+	Mat imori_part = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\imori_part.jpg");
+	
+	
+	Mat part1 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\S.png");
+	Mat part2 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\T.png");
 	//A1();
 	//A2();
 	//A3();
@@ -64,7 +73,8 @@ int main()
 	//A50(imgSrc512);
 	//A51(imgSrc512);
 	//A52(imgSrc512);
-	A53(imgSrc512);
+	//A53(imgSrc512);
+	A54(imori, imori_part);
 
 	return 0;
 }
