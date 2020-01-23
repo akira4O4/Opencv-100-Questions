@@ -6,6 +6,7 @@
 #include "A_21_30.h"
 #include "A_31_40.h"
 #include "A_41_50.h"
+#include "A_51_60.h"
 
 using namespace std;
 using namespace cv;
