@@ -77,7 +77,7 @@
 ## 21-30题的题目：
 ### 11-20需要引入头文件：A_21_30.h
 - [直方图归一化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A21.cpp "直方图归一化")
-- [直方图操作](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A22.cpp "直方图操作")
+- [方图操作](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A22.cpp "方图操作")
 - [直方图均衡化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A23.cpp "直方图均衡化")
 - [伽玛校正](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A24.cpp "伽玛校正")
 - [最邻近插值](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A25.cpp "最邻近插值")
@@ -115,4 +115,49 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/平移量为0的仿射变换.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换4.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/放射变换5.png)
+## 31-40题的题目：
+# 暂无
+### 11-20需要引入头文件：A_31_40.h
 
+## 41-50题的题目：
+### 41-50需要引入头文件：A_41_50.h
+- [Canny边缘检测：边缘强度](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A41.cpp "Canny边缘检测：边缘强度")
+- [Canny边缘检测：边缘细化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A42.cpp "Canny边缘检测：边缘细化")
+- [Canny 边缘检测：滞后阈值](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A43.cpp "Canny 边缘检测：滞后阈值")
+- [霍夫变换：直线检测](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A44.cpp "霍夫变换：直线检测")
+- [霍夫变换：直线检测-NMS](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A45.cpp "霍夫变换：直线检测-NMS")
+- [霍夫变换：直线检测-霍夫逆变换](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A46.cpp "霍夫变换：直线检测-霍夫逆变换")
+- [膨胀（Dilate）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A47.cpp "膨胀（Dilate）")
+- [腐蚀（Erode）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A48.cpp "腐蚀（Erode）")
+- [开运算（Opening Operation）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A49.cpp "开运算（Opening Operation）")
+- [闭运算（Closing Operation）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A50.cpp "闭运算（Closing Operation）")
+## 41-50题重要算法解析：
+### Canny边缘检测-高斯核
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/canny1.png)
+### Canny边缘检测-Sobel核（垂直和水平）
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/canny2.png)
+### Canny边缘检测-求梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/canny3.png)
+### 霍夫变换
+#### 笛卡尔坐标系下直线
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换1.png)  
+#### 霍夫变换下坐标方程
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换2.png)  
+#### 笛卡尔坐标系->霍夫坐标系（直线）
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换3.png)  
+#### 笛卡尔坐标系->霍夫坐标系（点）
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换4.png)  
+#### 笛卡尔坐标系->霍夫坐标系（两点）
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换5.png)  
+#### 笛卡尔坐标系->霍夫坐标系（三点）
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换6.png)  
+#### 笛卡尔坐标系->霍夫坐标系（多点）
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换7.png)  
+#### 通过霍夫坐标系下找最好共线点
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换8.png)  
+#### 极坐标系
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换9.png)  
+#### 极坐标系->霍夫坐标系
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换10.png)  
+#### 伪代码
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换11.png)  
