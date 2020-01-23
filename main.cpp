@@ -74,7 +74,8 @@ int main()
 	//A51(imgSrc512);
 	//A52(imgSrc512);
 	//A53(imgSrc512);
-	A54(imgSrc128, imgSrc128part);
+	//A54(imgSrc128, imgSrc128part);
+	A55(imgSrc128, imgSrc128part);
 
 	return 0;
 }
