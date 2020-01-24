@@ -14,9 +14,12 @@ using namespace cv;
 int main()
 {
 	Mat imgSrc32 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img32.png");
+
 	Mat imgSrc128 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img128.png");
-	Mat imgSrc256 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img256.png");
 	Mat imgSrc128part = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img128_part.png");
+
+	Mat imgSrc256 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img256.png");
+	
 	Mat imgSrc512 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\img512.png");
 	
 	
@@ -28,8 +31,8 @@ int main()
 	Mat imori_part = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\imori_part.jpg");
 	
 	
-	Mat part1 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\blue.png");
-	Mat part2 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\blue_part.png");
+	Mat part1 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\color.png");
+	Mat part2 = imread("C:\\Users\\Administrator\\Desktop\\OpencvTestImg\\blue1_part.png");
 	//A1();
 	//A2();
 	//A3();
@@ -75,7 +78,8 @@ int main()
 	//A52(imgSrc512);
 	//A53(imgSrc512);
 	//A54(imgSrc128, imgSrc128part);
-	A55(imgSrc128, imgSrc128part);
+	//A55(imgSrc128, imgSrc128part);
+	A56(imgSrc128, imgSrc128part);
 
 	return 0;
 }
