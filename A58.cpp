@@ -4,6 +4,7 @@
 #include "A_51_60.h"
 #include <math.h>
 #include <time.h>
+#include <vector>
 
 using namespace cv;
 void A58(Mat img)
@@ -109,33 +110,90 @@ void A58(Mat img)
 
 	int label = 0;
 	uchar up = 0, left = 0;
-	for (int y = 0; y < imgHeight; ++y)
+
+	int** labelSet;
+
+	//开辟空间:行=y
+	labelSet = new int* [imgHeight];
+
+	//开辟空间：列=x
+	for (int i = 0; i < imgHeight; ++i)
+		labelSet[i] = new int[imgWeight];
+
+	for (int i = 0; i < imgHeight; i++)
+		for (int j = 0; j < imgWeight; j++)
+			labelSet[i][j] = -1;
+
+	int _y = 0, _x = 0;
+
+	for (int y = 49; y < imgHeight; ++y)
 	{
 		for (int x = 0; x < imgWeight; ++x)
 		{
+			Mat temp = img.clone();
+			Point p(x, y);
+			circle(temp, p, 0, Scalar(0, 0, 255));
+			cv::imshow("temp", temp);
+			cv::waitKey(5);
+
 			val = (int)imgBin.at<uchar>(y, x);
 			//如果是白色：255
 			if (val == 255)
 			{
-				if (x == 0)
+				printf_s("白\n");
+				if (y >= 1 && x >= 1)
+				{
+					printf_s("1\n");
+					up = (int)imgBin.at<uchar>(y - 1, x);
+					left = (int)imgBin.at<uchar>(y, x - 1);
+				}
+				else if (x == 0 && y >= 1)
+				{
+					printf_s("2\n");
+					up = (int)imgBin.at<uchar>(y - 1, x);
 					left = 0;
-				if (y == 0)
+				}
+				else if (x >= 1 && y == 0)
+				{
+					printf_s("3\n");
 					up = 0;
-				up = (int)imgBin.at<uchar>(y - 1, x);
-				left = (int)imgBin.at<uchar>(y, x - 1);
+					left = (int)imgBin.at<uchar>(y, x - 1);
+				}
+				else if (x == 0 && y == 0)
+				{
+					printf_s("4\n");
+					up = 0;
+					left = 0;
+				}
+				printf_s("y:%d,x:%d up:%d,left:%d\n", y, x, up, left);
 				//邻域内像素值为0，添加新lable
 				if (up == 0 && left == 0)
 				{
 					label++;
+					_x = 0;
+					//labelSet[_y][0] = label;
 					imgBin.at<uchar>(y, x) = label;
+					_y++;
+					printf_s("label:%d\n", label);
+					Point p(x, y);
+					circle(img, p, 0, Scalar(0, 0, 255));
+					cv::imshow("temp", temp);
+					cv::waitKey(5);
 				}
 				//如果其中一个不为0，选择最小的label为新像素label
 				else if (up > 0 || left > 0)
-					imgBin.at<uchar>(y, x) = MIN(up, left);
+				{
+					int min = MIN(up, left);
+					imgBin.at<uchar>(y, x) = min;
+					//labelSet[_y][++_x] = min;
+				}
 			}
 			//如果是非白色则遍历下一个像素
 			else
+			{
+				printf_s("黑\n");
 				continue;
+			}
 		}
 	}
 
