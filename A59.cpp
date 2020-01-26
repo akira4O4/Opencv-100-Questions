@@ -199,9 +199,9 @@ void A59(Mat img)
 				{
 					label++;
 					imgBin.at<uchar>(y, x) = label;
-					printf_s("label:%d\n",label);
+					printf_s("label:%d\n", label);
 					drawColor = colorSet[label];
-					
+
 					//画点
 					Point p(x, y);
 					circle(temp, p, 0, drawColor);
@@ -244,12 +244,10 @@ void A59(Mat img)
 				//如果其中一个不为0(黑)，选择最小的label为新像素label
 				else
 				{
-					int min = MIN(MIN(MIN(up, left),leftup),rightup);
-					if (up == 0)
-						min = left;
-					if (left == 0)
-						min = up;
-					up = left = leftup = rightup = min;
+					int min = MIN(MIN(MIN(up, left), leftup), rightup);
+
+					if (rightup == 0)
+						min =left;
 					imgBin.at<uchar>(y, x) = min;
 
 					drawColor = colorSet[min];
