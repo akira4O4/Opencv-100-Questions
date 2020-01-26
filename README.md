@@ -177,14 +177,14 @@
 ## 51-60题重要算法解析：
 ### 形态学梯度
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/形态学梯度.png)
-### 形态学梯度
+### 模式匹配-误差平方和(SSD)
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/误差平方和(SSD).png)
 
-### 形态学梯度
+### 模式匹配-绝对值差和
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/绝对值差和.png)
-### 形态学梯度
+### 模式匹配-归一化交叉相关
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/归一化交叉相关.png)
-### 形态学梯度
+### 模式匹配-零均归一化
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/零均归一化.png)
-### 形态学梯度
+### 模式匹配-ncc zncc
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/ncc zncc.png)
