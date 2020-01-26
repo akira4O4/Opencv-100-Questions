@@ -5,6 +5,7 @@
 #include <math.h>
 #include <time.h>
 #include <vector>
+#include <map>
 
 using namespace cv;
 void A58(Mat img)
@@ -122,25 +123,38 @@ void A58(Mat img)
 
 	for (int i = 0; i < imgHeight; i++)
 		for (int j = 0; j < imgWeight; j++)
-			labelSet[i][j] = -1;
+			labelSet[i][j] = 0;
 
 	int _y = -1, _x = 0;
+	//bgr
+	Scalar white(255, 255, 255);
 
-	for (int y = 49; y < imgHeight; ++y)
+	Scalar blue(255, 0, 0);
+	Scalar greed(0, 255, 0);
+	Scalar red(0, 0, 255);
+	Scalar yellow(0, 255, 255);
+	Scalar pink(128, 0, 255);
+	Scalar purple(255, 0, 128);
+	Scalar origin(0, 128, 255);
+
+	Scalar colorSet[] = { white, blue ,greed ,red ,yellow,pink,purple ,origin };
+	Scalar drawColor;
+	int k = 0;
+	Mat temp = img.clone();
+	for (int y = 0; y < imgHeight; ++y)
 	{
 		for (int x = 0; x < imgWeight; ++x)
 		{
-			/*Mat temp = img.clone();
-			Point p(x, y);
-			circle(temp, p, 0, Scalar(0, 0, 255));
-			cv::imshow("temp", temp);
-			cv::waitKey(5);*/
-
 			val = (int)imgBin.at<uchar>(y, x);
 			//如果是白色：255
 			if (val == 255)
 			{
-				printf_s("白 ");
+
+				Point p(x, y);
+					circle(temp, p, 0, white);
+					cv::imshow("temp", temp);
+					cv::waitKey(5);
+
 				if (y >= 1 && x >= 1)
 				{
 					up = (int)imgBin.at<uchar>(y - 1, x);
@@ -162,56 +176,79 @@ void A58(Mat img)
 					left = 0;
 				}
 
-				printf_s("y:%d,x:%d up:%d,left:%d ", y, x, up, left);
+				//printf_s("y:%d,x:%d up:%d,left:%d ", y, x, up, left);
 				//邻域内像素值为0，添加新lable
 				if (up == 0 && left == 0)
 				{
 					_y++;
 					label++;
 					_x = 0;
-					labelSet[_y][0] = label;
 					imgBin.at<uchar>(y, x) = label;
 					printf_s("label:%d\n", label);
-
+					drawColor = colorSet[label];
 					//画点
-					/*Point p(x, y);
-					circle(img, p, 0, Scalar(0, 0, 255));
+					Point p(x, y);
+					circle(temp, p, 0, drawColor);
 					cv::imshow("temp", temp);
-					cv::waitKey(5);*/
+					cv::waitKey(5);
 				}
 				//如果其中一个不为0(黑)，选择最小的label为新像素label
+				
 				else if (up > 0 || left > 0)
 				{
 					int min = MIN(up, left);
 					if (up == 0)
 						min = left;
-					if (left == 0)
+					else if (left == 0)
 						min = up;
+					else
+					{
+						up = left = min;
+					}
 					imgBin.at<uchar>(y, x) = min;
-					labelSet[_y][_x++] = min;
-					printf_s("label:%d\n", label);
+
+					drawColor = colorSet[min];
+
+					Point p(x, y);
+					circle(temp, p, 0, drawColor);
+					cv::imshow("temp", temp);
+					cv::waitKey(5);
 				}
-				/*Point p(x, y);
-				circle(img, p, 0, Scalar(0, 0, 255));
-				cv::imshow("temp", temp);
-				cv::waitKey(5);*/
 			}
 			//如果是非白色则遍历下一个像素
 			else
-			{
-				printf_s("黑\n");
+				continue;
+
+		}
+	}
+	printf_s("扫描完成,label:%d\n", label);
+
+	int* labelSet2 = new int[label];
+	bool flag = false;
+	//二次遍历：没啥用
+	int t = 0;
+	label = LONG_MAX;
+	Mat temp1 = img.clone();
+	for (int y = imgHeight - 1; y >= 0; y--)
+	{
+		for (int x = imgWeight - 1; x >= 0; x--)
+		{
+			if ((int)imgBin.at<uchar>(y, x) == 0)
+			{ 
+				//label = LONG_MAX;
 				continue;
 			}
+			label = (int)imgBin.at<uchar>(y, x);
+			printf_s("%d %d %d\n", y, x, label);
+			drawColor = colorSet[label];
+			
+			Point p(x, y);
+			circle(temp1, p, 0, origin);
+			cv::imshow("temp1", temp1);
+			cv::waitKey(5);
 		}
 	}
-	for (int i = 0; i < imgHeight; ++i)
-	{
-		for (int j = 0; j < imgWeight; ++j)
-		{
-			printf_s("%d ", labelSet[i][j]);
-		}
-		printf_s("\n");
-	}
+
 	cv::imshow("img", img);
 	cv::imshow("imgBin", imgBin);
 	cv::waitKey(0);
