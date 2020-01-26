@@ -83,7 +83,8 @@ int main()
 	//A55(imgSrc128, imgSrc128part);
 	//A56(imgSrc128, imgSrc128part);
 	//A57(imgSrc128, imgSrc128part);
-	A58(seg);
+	//A58(seg);
+	A59(seg);
 
 	return 0;
 }
