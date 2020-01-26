@@ -201,6 +201,7 @@ void A59(Mat img)
 					imgBin.at<uchar>(y, x) = label;
 					printf_s("label:%d\n",label);
 					drawColor = colorSet[label];
+					
 					//»­µã
 					Point p(x, y);
 					circle(temp, p, 0, drawColor);
