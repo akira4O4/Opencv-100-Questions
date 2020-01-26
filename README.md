@@ -161,3 +161,30 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换10.png)  
 #### 伪代码
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/霍夫变换11.png)  
+
+## 51-60题的题目：
+### 51-60题需要引入头文件：A_51_60.h
+- [形态学梯度（Morphology Gradient）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A51.cpp "形态学梯度（Morphology Gradient）")
+- [顶帽（Top Hat）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A52.cpp "顶帽（Top Hat）")
+- [黑帽（Black Hat）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A53.cpp "黑帽（Black Hat）")
+- [误差平方和](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A54.cpp "误差平方和")
+- [绝对值差和](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A55.cpp "绝对值差和")
+- [归一化交叉相关](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A56.cpp "归一化交叉相关")
+- [零均值归一化交叉相关](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A57.cpp "零均值归一化交叉相关")
+- [4邻域连通域标记](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A58.cpp "4邻域连通域标记")
+- [8邻域连通域标记](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A59.cpp "8邻域连通域标记")
+- [透明混合（Alpha Blending）(py)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A60.py "透明混合（Alpha Blending）")
+## 51-60题重要算法解析：
+### 形态学梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/形态学梯度.png)
+### 形态学梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/误差平方和(SSD).png)
+
+### 形态学梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/绝对值差和.png)
+### 形态学梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/归一化交叉相关.png)
+### 形态学梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/零均归一化.png)
+### 形态学梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/ncc zncc.png)
