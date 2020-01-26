@@ -180,9 +180,7 @@ void A58(Mat img)
 				//邻域内像素值为0，添加新lable
 				if (up == 0 && left == 0)
 				{
-					_y++;
 					label++;
-					_x = 0;
 					imgBin.at<uchar>(y, x) = label;
 					printf_s("label:%d\n", label);
 					drawColor = colorSet[label];
@@ -206,7 +204,6 @@ void A58(Mat img)
 						up = left = min;
 					}
 					imgBin.at<uchar>(y, x) = min;
-
 					drawColor = colorSet[min];
 
 					Point p(x, y);
