@@ -141,6 +141,7 @@ void A58(Mat img)
 	Scalar drawColor;
 	int k = 0;
 	Mat temp = img.clone();
+
 	for (int y = 0; y < imgHeight; ++y)
 	{
 		for (int x = 0; x < imgWeight; ++x)
