@@ -187,4 +187,4 @@
 ### 模式匹配-零均归一化
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/零均归一化.png)
 ### 模式匹配-ncc zncc
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/ncc zncc.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/ncc_zncc.png)
