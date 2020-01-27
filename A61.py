@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = "C:/Users/Administrator/Desktop/OpencvTestImg/renketsu.png"
+img = "C:/Users/Administrator/Desktop/OpencvTestImg/img128.png"
 
 
 def connect_4(img):
@@ -42,7 +42,7 @@ def connect_4(img):
             elif S == 4:
                 img_out[y, x] = [255, 0, 255]
 
-    out = img_out.astype(np.uint8)
+    img_out = img_out.astype(np.uint8)
 
     cv2.imshow("src", img)
     cv2.imshow("img_out", img_out)
