@@ -6,9 +6,9 @@ img = "C:/Users/Administrator/Desktop/OpencvTestImg/img10.png"
 
 
 def connect_4(img):
-    img = cv2.imread(img).astype(np.float32)
+    img = cv2.imread(img).astype(np.uint8)
     H, W, C = img.shape
-    tmp = np.zeros((H, W), dtype=np.int)
+    tmp = np.zeros((H, W), dtype=np.uint8)
     img_out = np.zeros((H, W, 3), dtype=np.uint8)
 
     # 二值化
@@ -41,9 +41,6 @@ def connect_4(img):
                 img_out[y, x] = [255, 255, 0]
             elif S == 4:
                 img_out[y, x] = [255, 0, 255]
-
-    img_out = img_out.astype(np.uint8)
-    img = img.astype(np.uint8)
 
     cv2.imshow("src", img)
     cv2.imshow("tmp", tmp)
