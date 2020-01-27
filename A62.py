@@ -7,14 +7,11 @@ img = "C:/Users/Administrator/Desktop/OpencvTestImg/img10.png"
 
 # connect 8
 def connect_8(img):
-    img = cv2.imread(img).astype(np.float32)
-    # get shape
+    img = cv2.imread(img).astype(np.uint8)
     H, W, C = img.shape
 
-    # prepare temporary
     _tmp = np.zeros((H, W), dtype=np.int)
 
-    # get binarize
     _tmp[img[..., 0] > 0] = 1
 
     # inverse for connect 8
@@ -50,10 +47,9 @@ def connect_8(img):
             elif S == 4:
                 out[y, x] = [255, 0, 255]
 
-    out = out.astype(np.uint8)
-    # Save result
-    cv2.imwrite("out.png", out)
     cv2.imshow("result", out)
+    cv2.imshow("src", img)
+    cv2.imshow("tmp", tmp)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
