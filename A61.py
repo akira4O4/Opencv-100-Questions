@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = "C:/Users/Administrator/Desktop/OpencvTestImg/img128.png"
+img = "C:/Users/Administrator/Desktop/OpencvTestImg/img10.png"
 
 
 def connect_4(img):
@@ -43,8 +43,10 @@ def connect_4(img):
                 img_out[y, x] = [255, 0, 255]
 
     img_out = img_out.astype(np.uint8)
+    img = img.astype(np.uint8)
 
     cv2.imshow("src", img)
+    cv2.imshow("tmp", tmp)
     cv2.imshow("img_out", img_out)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
