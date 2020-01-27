@@ -7,6 +7,7 @@
 #include "A_31_40.h"
 #include "A_41_50.h"
 #include "A_51_60.h"
+#include "A_61_70.h"
 
 using namespace std;
 using namespace cv;
@@ -84,7 +85,7 @@ int main()
 	//A56(imgSrc128, imgSrc128part);
 	//A57(imgSrc128, imgSrc128part);
 	//A58(seg);
-	A59(seg);
+	//A59(seg);
 
 	return 0;
 }
