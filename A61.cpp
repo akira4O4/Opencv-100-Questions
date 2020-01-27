@@ -111,7 +111,7 @@ void A61(Mat img)
 	{
 		for (int x = 0; x < W; ++x)
 		{
-			printf_s("y:%d x:%d\n",y,x);
+			//printf_s("y:%d x:%d\n",y,x);
 			//如果是黑色则跳过
 			if (imgBin.at<uchar>(y, x) == 1)
 				continue;
