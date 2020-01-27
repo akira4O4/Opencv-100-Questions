@@ -14,10 +14,8 @@ def connect_8(img):
 
     _tmp[img[..., 0] > 0] = 1
 
-    # inverse for connect 8
     tmp = 1 - _tmp
 
-    # prepare image
     out = np.zeros((H, W, 3), dtype=np.uint8)
 
     # each pixel
