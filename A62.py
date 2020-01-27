@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = "C:/Users/Administrator/Desktop/OpencvTestImg/img10.png"
+img = "C:/Users/Administrator/Desktop/OpencvTestImg/img128.png"
 
 
 # connect 8
@@ -10,7 +10,7 @@ def connect_8(img):
     img = cv2.imread(img).astype(np.uint8)
     H, W, C = img.shape
 
-    _tmp = np.zeros((H, W), dtype=np.int)
+    _tmp = np.zeros((H, W), dtype=np.uint8)
 
     _tmp[img[..., 0] > 0] = 1
 
