@@ -80,8 +80,10 @@ def refine(img):
 
                 # x的8近邻中有三个以上取值为1。
                 sum = 0
-                for _y in range(-1,2):
-                    for _x in range(-1,2):
+                for _y in range(-1, 2):
+                    for _x in range(-1, 2):
+                        if _y == 0 and _x == 0:
+                            continue
                         sum += tmp[y + _y, x + _x]
                 if sum >= 4:
                     condition += 1
@@ -102,5 +104,3 @@ def refine(img):
 if __name__ == "__main__":
     # binarization_0_1(img)
     refine(img)
-
-
