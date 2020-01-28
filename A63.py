@@ -55,6 +55,8 @@ def refine(img):
                 if out[y, x] == 0:
                     continue
 
+
+
                 # 判断条件
                 condition = 0  # 只针对当前像素
 
