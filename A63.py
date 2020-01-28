@@ -46,7 +46,7 @@ def refine(img):
     while count > 0:
         count = 0
         # 复制一份进行判断
-        temp = out.copy()
+        tmp = out.copy()
         for y in range(H):
             for x in range(W):
 
@@ -58,27 +58,27 @@ def refine(img):
                 condition = 0  # 只针对当前像素
 
                 # 4近邻像素的取值有一个以上为0(2,3,4添加越界判断)：上下左右
-                if temp[max(y - 1, 0), x] + temp[min(y + 1, H - 1), x] + temp[y, max(x - 1, 0)] + temp[
+                if tmp[max(y - 1, 0), x] + tmp[min(y + 1, H - 1), x] + tmp[y, max(x - 1, 0)] + tmp[
                     y, min(x + 1, W - 1)] < 4:
                     condition += 1
 
                 c = 0
-                c += (temp[y, min(x + 1, W - 1)] - temp[y, min(x + 1, W - 1)] * temp[max(y - 1, 0), min(x + 1, W - 1)] *
-                      temp[
+                c += (tmp[y, min(x + 1, W - 1)] - tmp[y, min(x + 1, W - 1)] * tmp[max(y - 1, 0), min(x + 1, W - 1)] *
+                      tmp[
                           max(y - 1, 0), x])
-                c += (temp[max(y - 1, 0), x] - temp[max(y - 1, 0), x] * temp[max(y - 1, 0), max(x - 1, 0)] * temp[
+                c += (tmp[max(y - 1, 0), x] - tmp[max(y - 1, 0), x] * tmp[max(y - 1, 0), max(x - 1, 0)] * tmp[
                     y, max(x - 1, 0)])
-                c += (temp[y, max(x - 1, 0)] - temp[y, max(x - 1, 0)] * temp[min(y + 1, H - 1), max(x - 1, 0)] * temp[
+                c += (tmp[y, max(x - 1, 0)] - tmp[y, max(x - 1, 0)] * tmp[min(y + 1, H - 1), max(x - 1, 0)] * tmp[
                     min(y + 1, H - 1), x])
-                c += (temp[min(y + 1, H - 1), x] - temp[min(y + 1, H - 1), x] * temp[
+                c += (tmp[min(y + 1, H - 1), x] - tmp[min(y + 1, H - 1), x] * tmp[
                     min(y + 1, H - 1), min(x + 1, W - 1)] *
-                      temp[y, min(x + 1, W - 1)])
+                      tmp[y, min(x + 1, W - 1)])
                 # x的4连接数为1；
                 if c == 1:
                     condition += 1
 
                 # x的8近邻中有三个以上取值为1。
-                if np.sum(temp[max(y - 1, 0): min(y + 2, H), max(x - 1, 0): min(x + 2, W)]) >= 4:
+                if np.sum(tmp[max(y - 1, 0): min(y + 2, H), max(x - 1, 0): min(x + 2, W)]) >= 4:
                     condition += 1
 
                 if condition == 3:
