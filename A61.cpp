@@ -100,7 +100,7 @@ void A61(Mat img)
 		for (int x = 0; x < W; ++x)
 		{
 			if (imgGray.at<uchar>(y, x) > good_k)
-				imgBin.at<uchar>(y, x) = 255;
+				imgBin.at<uchar>(y, x) = 1;
 			else
 				imgBin.at<uchar>(y, x) = 0;
 		}
@@ -115,44 +115,43 @@ void A61(Mat img)
 			//如果是黑色则跳过
 			if (imgBin.at<uchar>(y, x) == 1)
 				continue;
-			int s = 0;
-			//右上
-			s += imgBin.at<uchar>(y, MIN(x + 1, W - 1)) - imgBin.at<uchar>(y, MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), x);
+			int c = 0;
+			c += (imgBin.at<uchar>(y, MIN(x + 1, W - 1)) - imgBin.at<uchar>(y, MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) *
+				imgBin.at<uchar>(
+					MAX(y - 1, 0), x));
+			c += (imgBin.at<uchar>(MAX(y - 1, 0), x) - imgBin.at<uchar>(MAX(y - 1, 0), x) * imgBin.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * imgBin.at<uchar>(
+				y, MAX(x - 1, 0)));
+			c += (imgBin.at<uchar>(y, MAX(x - 1, 0)) - imgBin.at<uchar>(y, MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * imgBin.at<uchar>(
+				MIN(y + 1, H - 1), x));
+			c += (imgBin.at<uchar>(MIN(y + 1, H - 1), x) - imgBin.at<uchar>(MIN(y + 1, H - 1), x) * imgBin.at<uchar>(
+				MIN(y + 1, H - 1), MIN(x + 1, W - 1)) *
+				imgBin.at<uchar>(y, MIN(x + 1, W - 1)));
 
-			//左上
-			s += imgBin.at<uchar>(MAX(y - 1, 0), x) - imgBin.at<uchar>(MAX(y - 1, 0), x) * imgBin.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * imgBin.at<uchar>(y, MAX(x - 1, 0));
-
-			//左下
-			s += imgBin.at<uchar>(y, MAX(x - 1, 0)) - imgBin.at<uchar>(y, MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), x);
-
-			//右下
-			s += imgBin.at<uchar>(MIN(y + 1, H - 1), x) - imgBin.at<uchar>(MIN(y + 1, H - 1), x) * imgBin.at<uchar>(MIN(y + 1, H - 1), MIN(x + 1, W - 1)) * imgBin.at<uchar>(y, MIN(x + 1, W - 1));
-
-			if (s == 0)
+			if (c == 0)
 			{
 				imgOut.at<Vec3b>(y, x)[0] = 0;
 				imgOut.at<Vec3b>(y, x)[1] = 0;
 				imgOut.at<Vec3b>(y, x)[2] = 255;
 			}
-			else if (s == 1)
+			else if (c == 1)
 			{
 				imgOut.at<Vec3b>(y, x)[0] = 0;
 				imgOut.at<Vec3b>(y, x)[1] = 255;
 				imgOut.at<Vec3b>(y, x)[2] = 0;
 			}
-			else if (s == 2)
+			else if (c == 2)
 			{
 				imgOut.at<Vec3b>(y, x)[0] = 255;
 				imgOut.at<Vec3b>(y, x)[1] = 0;
 				imgOut.at<Vec3b>(y, x)[2] = 0;
 			}
-			else if (s == 3)
+			else if (c == 3)
 			{
 				imgOut.at<Vec3b>(y, x)[0] = 255;
 				imgOut.at<Vec3b>(y, x)[1] = 255;
 				imgOut.at<Vec3b>(y, x)[2] = 0;
 			}
-			else if (s == 4)
+			else if (c == 4)
 			{
 				imgOut.at<Vec3b>(y, x)[0] = 255;
 				imgOut.at<Vec3b>(y, x)[1] = 0;
