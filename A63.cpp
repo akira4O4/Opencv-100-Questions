@@ -4,6 +4,8 @@
 #include "A_61_70.h"
 #include <math.h>
 
+using namespace cv;
+
 void A63(Mat img)
 {
 	int H = img.rows;
