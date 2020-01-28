@@ -103,7 +103,7 @@ void A62(Mat img)
 			if (imgGray.at<uchar>(y, x) > good_k)
 				imgBin.at<uchar>(y, x) = 0;
 			else
-				imgBin.at<uchar>(y, x) = 255;
+				imgBin.at<uchar>(y, x) = 1;
 		}
 	}
 
@@ -118,16 +118,16 @@ void A62(Mat img)
 				continue;
 			int s = 0;
 			//右上
-			s += imgBin.at<uchar>(y, MIN(x + 1, W - 1)) - imgBin.at<uchar>(y, MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), x);
-
-			//左上
-			s += imgBin.at<uchar>(MAX(y - 1, 0), x) - imgBin.at<uchar>(MAX(y - 1, 0), x) * imgBin.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * imgBin.at<uchar>(y, MAX(x - 1, 0));
-
-			//左下
-			s += imgBin.at<uchar>(y, MAX(x - 1, 0)) - imgBin.at<uchar>(y, MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), x);
-
-			//右下
-			s += imgBin.at<uchar>(MIN(y + 1, H - 1), x) - imgBin.at<uchar>(MIN(y + 1, H - 1), x) * imgBin.at<uchar>(MIN(y + 1, H - 1), MIN(x + 1, W - 1)) * imgBin.at<uchar>(y, MIN(x + 1, W - 1));
+			s += (imgBin.at<uchar>(y, MIN(x + 1, W - 1)) - imgBin.at<uchar>(y, MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) *
+				imgBin.at<uchar>(
+					MAX(y - 1, 0), x));
+			s += (imgBin.at<uchar>(MAX(y - 1, 0), x) - imgBin.at<uchar>(MAX(y - 1, 0), x) * imgBin.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * imgBin.at<uchar>(
+				y, MAX(x - 1, 0)));
+			s += (imgBin.at<uchar>(y, MAX(x - 1, 0)) - imgBin.at<uchar>(y, MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * imgBin.at<uchar>(
+				MIN(y + 1, H - 1), x));
+			s += (imgBin.at<uchar>(MIN(y + 1, H - 1), x) - imgBin.at<uchar>(MIN(y + 1, H - 1), x) * imgBin.at<uchar>(
+				MIN(y + 1, H - 1), MIN(x + 1, W - 1)) *
+				imgBin.at<uchar>(y, MIN(x + 1, W - 1)));
 
 			if (s == 0)
 			{
