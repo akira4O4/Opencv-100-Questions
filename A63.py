@@ -44,6 +44,7 @@ def refine(img):
 
     count = 1
     while count > 0:
+        print("-");
         count = 0
         # 复制一份进行判断
         tmp = out.copy()
@@ -78,7 +79,11 @@ def refine(img):
                     condition += 1
 
                 # x的8近邻中有三个以上取值为1。
-                if np.sum(tmp[max(y - 1, 0): min(y + 2, H), max(x - 1, 0): min(x + 2, W)]) >= 4:
+                sum = 0
+                for _y in range(-1,2):
+                    for _x in range(-1,2):
+                        sum += tmp[y + _y, x + _x]
+                if sum >= 4:
                     condition += 1
 
                 if condition == 3:
@@ -97,3 +102,5 @@ def refine(img):
 if __name__ == "__main__":
     # binarization_0_1(img)
     refine(img)
+
+
