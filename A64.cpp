@@ -125,11 +125,18 @@ void A64(Mat img)
 
 		}
 	}
+	//被删除像素应该满足6个条件
+	//1.p的灰度值为255，即p不是背景；
+	//	2.x0、x2、x4、x6不全为255；（不然删除p，会造成图像空心）
+	//	3.x0 - x7至少有2个255；（若只有一个255，则p为图像的某个端点，不能删除否则影响图像性质，若没有255，则p为孤立点，也不能删除）
+	//	4.p的8联通区域连接数为1，即Nc（p） = 1，此时p称为可删除点；
+	//	5.假设x2被标记删除，x2 = 0时，p的联通连接数为1；
+	//	6.假设x4被标记删除，x4 = 0时，p的联通连接数为1。
 
 	Mat out = imgBin.clone();
 	Mat tmp;
-	int condition = 0;
 	bool flag = true;
+
 	while (flag)
 	{
 		flag = false;
@@ -153,10 +160,10 @@ void A64(Mat img)
 				if (tmp.at<uchar>(y, x) == 0)
 					continue;
 
-				//4邻域内不全部为1
-				if (tmp.at<uchar>(MAX(y - 1, 0), x) + tmp.at<uchar>(MIN(y + 1, H - 1), x) + tmp.at<uchar>(y, MAX(x - 1, 0) + tmp.at<uchar>(y, MIN(x + 1, W - 1)) < 4))
-					condition++;
-
+				//4邻域内至少有一个0
+				if (tmp.at<uchar>(MAX(y - 1, 0), x) * tmp.at<uchar>(MIN(y + 1, H - 1), x)* tmp.at<uchar>(y, MAX(x - 1, 0) * tmp.at<uchar>(y, MIN(x + 1, W - 1)) !=0))
+					continue;
+				
 				//x1-x8 中，至少有2个为1
 				int sum = 0;
 				for (int _y = -1; _y < 2; ++_y)
@@ -177,7 +184,7 @@ void A64(Mat img)
 				if (s != 1)
 					continue;
 
-				// 条件5: 假设p2已标记删除（1），则令p2为背景（1），不改变p的联结数 
+				// 条件5: 假设p2已标记删除（1），则令p2为背景（1），p的联结数=1 
 				//在img8中 0是前景，1是背景
 				img8.at<uchar>(y - 1, x) = 1;
 				s = Calculate8Connections(img8, y, x, H, W);
@@ -185,7 +192,7 @@ void A64(Mat img)
 				if (s != 1)
 					continue;
 				
-				// 条件6: 假设p4已标记删除，则令p4为背景，不改变p的联结数 
+				// 条件6: 假设p4已标记删除，则令p4为背景，p的联结数=1 
 				img8.at<uchar>(y, x - 1) = 1;
 				s = Calculate8Connections(img8, y, x, H, W);
 				img8.at<uchar>(y, x - 1) = 0;
