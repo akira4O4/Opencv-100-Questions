@@ -89,9 +89,9 @@ int main()
 	//A58(seg);
 	//A59(seg);
 	//A61(img10);
-	A62(img10);
+	//A62(img10);
 	//A63(words);
-	//A64(words);
+	A64(words);
 
 	return 0;
 }
