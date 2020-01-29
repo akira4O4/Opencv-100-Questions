@@ -91,7 +91,8 @@ int main()
 	//A61(img10);
 	//A62(img10);
 	//A63(words);
-	A64(words);
+	//A64(words);
+	A65(words);
 
 	return 0;
 }
