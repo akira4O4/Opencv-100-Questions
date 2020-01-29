@@ -6,7 +6,6 @@
 
 void A62(Mat img)
 {
-	printf_s("---");
 	int H = img.rows;
 	int W = img.cols;
 	int channel = img.channels();
@@ -93,7 +92,7 @@ void A62(Mat img)
 	}
 
 	printf_s("good k;%f\n", good_k);
-
+	Mat img8 = Mat::zeros(H, W, CV_8UC1);
 	//取得最好的k值，以k值作为阈值进行二值化
 	for (int y = 0; y < H; ++y)
 	{
@@ -101,9 +100,14 @@ void A62(Mat img)
 		{
 			//在这里进行翻转0-255
 			if (imgGray.at<uchar>(y, x) > good_k)
-				imgBin.at<uchar>(y, x) = 0;
+				img8.at<uchar>(y, x) = 0;
 			else
+				img8.at<uchar>(y, x) = 1;
+
+			if (imgGray.at<uchar>(y, x) > good_k)
 				imgBin.at<uchar>(y, x) = 1;
+			else
+				imgBin.at<uchar>(y, x) = 0;
 		}
 	}
 
@@ -114,20 +118,14 @@ void A62(Mat img)
 		{
 			//printf_s("y:%d x:%d\n",y,x);
 			//如果是黑色则跳过
-			if (imgBin.at<uchar>(y, x) == 1)
+			if (imgBin.at<uchar>(y, x) == 0)
 				continue;
 			int s = 0;
 			//右上
-			s += (imgBin.at<uchar>(y, MIN(x + 1, W - 1)) - imgBin.at<uchar>(y, MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) *
-				imgBin.at<uchar>(
-					MAX(y - 1, 0), x));
-			s += (imgBin.at<uchar>(MAX(y - 1, 0), x) - imgBin.at<uchar>(MAX(y - 1, 0), x) * imgBin.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * imgBin.at<uchar>(
-				y, MAX(x - 1, 0)));
-			s += (imgBin.at<uchar>(y, MAX(x - 1, 0)) - imgBin.at<uchar>(y, MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * imgBin.at<uchar>(
-				MIN(y + 1, H - 1), x));
-			s += (imgBin.at<uchar>(MIN(y + 1, H - 1), x) - imgBin.at<uchar>(MIN(y + 1, H - 1), x) * imgBin.at<uchar>(
-				MIN(y + 1, H - 1), MIN(x + 1, W - 1)) *
-				imgBin.at<uchar>(y, MIN(x + 1, W - 1)));
+			s += (img8.at<uchar>(y, MIN(x + 1, W - 1)) - img8.at<uchar>(y, MIN(x + 1, W - 1)) * img8.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) * img8.at<uchar>(MAX(y - 1, 0), x));
+			s += (img8.at<uchar>(MAX(y - 1, 0), x) - img8.at<uchar>(MAX(y - 1, 0), x) * img8.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * img8.at<uchar>(y, MAX(x - 1, 0)));
+			s += (img8.at<uchar>(y, MAX(x - 1, 0)) - img8.at<uchar>(y, MAX(x - 1, 0)) * img8.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * img8.at<uchar>(MIN(y + 1, H - 1), x));
+			s += (img8.at<uchar>(MIN(y + 1, H - 1), x) - img8.at<uchar>(MIN(y + 1, H - 1), x) * img8.at<uchar>(MIN(y + 1, H - 1), MIN(x + 1, W - 1)) * img8.at<uchar>(y, MIN(x + 1, W - 1)));
 
 			if (s == 0)
 			{
@@ -159,10 +157,9 @@ void A62(Mat img)
 				imgOut.at<Vec3b>(y, x)[1] = 0;
 				imgOut.at<Vec3b>(y, x)[2] = 255;
 			}
-
 		}
 	}
-
+	//imwrite("imgout.jpg", imgOut);
 	cv::imshow("img", img);
 	cv::imshow("imgBin", imgBin);
 	cv::imshow("imgOut", imgOut);
