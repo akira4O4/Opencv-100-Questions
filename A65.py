@@ -4,28 +4,6 @@ import numpy as np
 img = "C:/Users/Administrator/Desktop/OpencvTestImg/words.png"
 
 
-# 步骤一：执行光栅扫描并标记满足以下5个条件的所有像素：
-#
-# 这是一个黑色像素；
-#
-# 顺时针查看$x_2$、$x_3$、$\cdots$、$x_9$、$x_2$时，从$0$到$1$​的变化次数仅为$1$；
-#
-# $x_2$、$x_3$、$\cdots$、$x_9$中$1$的个数在$2$个以上$6$个以下；
-#
-# $x_2$、$x_4$、$x_6$中的一个为1；
-#
-# $x_4$、$x_6$、$x_8$中的一个为1；
-#
-# 将标记的像素全部变为$1$。
-#
-# 步骤二：执行光栅扫描并标记满足以下5个条件的所有像素：
-#
-# 这是一个黑色像素；
-# 顺时针查看$x_2$、$x_3$、$\cdots$、$x_9$、$x_2$时，从0到1的变化次数仅为1；
-# $x_2$、$x_3$、$\cdots$、$x_9$中$1$的个数在$2$个以上$6$个以下；
-# $x_2$、$x_4$、$x_6$中的一个为1；
-# $x_2$、$x_6$、$x_8$中的一个为1；
-# 将标记的像素全部变为$1$。
 def zhangs_suen(img):
     img = cv2.imread(img).astype(np.float32)
     H, W, C = img.shape
@@ -66,6 +44,8 @@ def zhangs_suen(img):
                 sum = 0
                 for _y in range(-1, 2):
                     for _x in range(-1, 2):
+                        if _y == 0 and _x == 0:
+                            continue
                         sum += out[y + _y, x + _x]
                 if sum < 2 or sum > 6:
                     continue
@@ -109,6 +89,8 @@ def zhangs_suen(img):
                 sum = 0
                 for _y in range(-1, 2):
                     for _x in range(-1, 2):
+                        if _y == 0 and _x == 0:
+                            continue
                         sum += out[y + _y, x + _x]
                 if sum < 2 or sum > 6:
                     continue
