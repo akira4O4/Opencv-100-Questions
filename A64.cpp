@@ -6,6 +6,16 @@
 
 using namespace cv;
 
+int Calculate8Connections(Mat img8, int y, int x, int H, int W)
+{
+	int s = 0;
+	s += (img8.at<uchar>(y, MIN(x + 1, W - 1)) - img8.at<uchar>(y, MIN(x + 1, W - 1)) * img8.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) * img8.at<uchar>(MAX(y - 1, 0), x));
+	s += (img8.at<uchar>(MAX(y - 1, 0), x) - img8.at<uchar>(MAX(y - 1, 0), x) * img8.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * img8.at<uchar>(y, MAX(x - 1, 0)));
+	s += (img8.at<uchar>(y, MAX(x - 1, 0)) - img8.at<uchar>(y, MAX(x - 1, 0)) * img8.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * img8.at<uchar>(MIN(y + 1, H - 1), x));
+	s += (img8.at<uchar>(MIN(y + 1, H - 1), x) - img8.at<uchar>(MIN(y + 1, H - 1), x) * img8.at<uchar>(MIN(y + 1, H - 1), MIN(x + 1, W - 1)) * img8.at<uchar>(y, MIN(x + 1, W - 1)));
+	return s;
+}
+
 void A64(Mat img)
 {
 	int H = img.rows;
@@ -94,39 +104,60 @@ void A64(Mat img)
 	}
 	printf_s("good k;%f\n", good_k);
 
+	Mat img8 = Mat::zeros(H, W, CV_8UC1);
+
 	//取得最好的k值，以k值作为阈值进行二值化
 	for (int y = 0; y < H; ++y)
 	{
 		for (int x = 0; x < W; ++x)
 		{
-			//在这里进行翻转0-255
+			//8连接数：在这里进行翻转0-255
 			if (imgGray.at<uchar>(y, x) > good_k)
+			{
 				imgBin.at<uchar>(y, x) = 1;
+				img8.at<uchar>(y, x) = 0;
+			}
 			else
+			{
 				imgBin.at<uchar>(y, x) = 0;
+				img8.at<uchar>(y, x) = 1;
+			}
+
 		}
 	}
 
 	Mat out = imgBin.clone();
 	Mat tmp;
 	int condition = 0;
-	while (true)
+	bool flag = true;
+	while (flag)
 	{
+		flag = false;
 		tmp = out.clone();
 		for (int y = 0; y < H; ++y)
 		{
 			for (int x = 0; x < W; ++x)
 			{
+				if (out.at<uchar>(y, x) == 0)
+					img8.at<uchar>(y, x) = 1;
+				else
+					img8.at<uchar>(y, x) = 0;
+			}
+		}
+
+		for (int y = 0; y < H; ++y)
+		{
+			for (int x = 0; x < W; ++x)
+			{
+				//黑色则跳过
 				if (tmp.at<uchar>(y, x) == 0)
 					continue;
 
-				//上下左右不全部为1（否则把p标记删除）
+				//4邻域内不全部为1
 				if (tmp.at<uchar>(MAX(y - 1, 0), x) + tmp.at<uchar>(MIN(y + 1, H - 1), x) + tmp.at<uchar>(y, MAX(x - 1, 0) + tmp.at<uchar>(y, MIN(x + 1, W - 1)) < 4))
 					condition++;
-				else
-					out.at<uchar>(y, x) = 0;
 
-				//x1~x8 中，至少有2个为1
+				//x1-x8 中，至少有2个为1
 				int sum = 0;
 				for (int _y = -1; _y < 2; ++_y)
 				{
@@ -137,17 +168,51 @@ void A64(Mat img)
 						sum += tmp.at<uchar>(y + _y, x + _x);
 					}
 				}
-				if (sum >= 2)
-					condition++;
+				if (sum <= 1)
+					continue;
+
+				//p的8连通联结数为1；
+				//计算（y,x）的8连接数
+				int s = Calculate8Connections(img8, y, x, H, W);
+				if (s != 1)
+					continue;
+
+				// 条件5: 假设p2已标记删除（1），则令p2为背景（1），不改变p的联结数 
+				//在img8中 0是前景，1是背景
+				img8.at<uchar>(y - 1, x) = 1;
+				s = Calculate8Connections(img8, y, x, H, W);
+				img8.at<uchar>(y - 1, x) = 0;
+				if (s != 1)
+					continue;
+				
+				// 条件6: 假设p4已标记删除，则令p4为背景，不改变p的联结数 
+				img8.at<uchar>(y, x - 1) = 1;
+				s = Calculate8Connections(img8, y, x, H, W);
+				img8.at<uchar>(y, x - 1) = 0;
+
+				if (s != 1)
+					continue;
+
+				printf_s("执行\n");
+				out.at<uchar>(y, x) = 0;//满足以上条件则删除标记
+				flag = true;
 			}
 		}
-
 	}
 
-
+	//扩张像素
+	for (int y = 0; y < H; ++y)
+	{
+		for (int x = 0; x < W; ++x)
+		{
+			if (out.at<uchar>(y, x) == 0)
+				continue;
+			out.at<uchar>(y, x) = out.at<uchar>(y, x) * 255;
+		}
+	}
 	cv::imshow("img", img);
-	cv::imshow("out", imgBin);
+	cv::imshow("out", out);
 	cv::waitKey(0);
 	cv::destroyAllWindows();
-
 }
+
