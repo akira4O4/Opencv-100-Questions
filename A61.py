@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = "C:/Users/Administrator/Desktop/OpencvTestImg/img10.png"
+img = "C:/Users/Administrator/Desktop/OpencvTestImg/img128.png"
 
 
 def connect_4(img):
