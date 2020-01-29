@@ -30,6 +30,7 @@ def hilditch(img):
     count = 1
 
     while count > 0:
+        count = 0
         tmp1 = out.copy()
         tmp2 = out.copy()
         _tmp1 = 1 - tmp1
@@ -38,6 +39,7 @@ def hilditch(img):
             for x in range(W):
                 if out[y, x] == 0:
                     continue
+
                 condition = 0
                 # 当前像素的4-近邻中有一个以上0；
                 if (tmp1[y, min(x + 1, W - 1)] * tmp1[max(y - 1, 0), x] * tmp1[y, max(x - 1, 0)] * tmp1[
@@ -78,17 +80,7 @@ def hilditch(img):
                     condition += 1
 
                 _tmp2 = 1 - out
-                c = 0
-                c += (_tmp2[y, min(x + 1, W - 1)] - _tmp2[y, min(x + 1, W - 1)] * _tmp2[
-                    max(y - 1, 0), min(x + 1, W - 1)] * _tmp2[max(y - 1, 0), x])
-                c += (_tmp2[max(y - 1, 0), x] - _tmp2[max(y - 1, 0), x] * (1 - tmp1[max(y - 1, 0), max(x - 1, 0)]) *
-                      _tmp2[y, max(x - 1, 0)])
-                c += (_tmp2[y, max(x - 1, 0)] - _tmp2[y, max(x - 1, 0)] * _tmp2[min(y + 1, H - 1), max(x - 1, 0)] *
-                      _tmp2[min(y + 1, H - 1), x])
-                c += (_tmp2[min(y + 1, H - 1), x] - _tmp2[min(y + 1, H - 1), x] * _tmp2[
-                    min(y + 1, H - 1), min(x + 1, W - 1)] * _tmp2[y, min(x + 1, W - 1)])
 
-                _tmp2 = 1 - out
                 c = 0
                 c += (_tmp2[y, min(x + 1, W - 1)] - _tmp2[y, min(x + 1, W - 1)] * _tmp2[
                     max(y - 1, 0), min(x + 1, W - 1)] * _tmp2[max(y - 1, 0), x])
@@ -104,8 +96,7 @@ def hilditch(img):
                 c = 0
                 c += (_tmp2[y, min(x + 1, W - 1)] - _tmp2[y, min(x + 1, W - 1)] * _tmp2[
                     max(y - 1, 0), min(x + 1, W - 1)] * (1 - tmp1[max(y - 1, 0), x]))
-                c += ((1 - tmp1[max(y - 1, 0), x]) - (1 - tmp1[max(y - 1, 0), x]) * _tmp2[
-                    max(y - 1, 0), max(x - 1, 0)] *
+                c += ((1 - tmp1[max(y - 1, 0), x]) - (1 - tmp1[max(y - 1, 0), x]) * _tmp2[max(y - 1, 0), max(x - 1, 0)] *
                       _tmp2[y, max(x - 1, 0)])
                 c += (_tmp2[y, max(x - 1, 0)] - _tmp2[y, max(x - 1, 0)] * _tmp2[min(y + 1, H - 1), max(x - 1, 0)] *
                       _tmp2[min(y + 1, H - 1), x])
@@ -116,7 +107,7 @@ def hilditch(img):
 
                 c = 0
                 c += (_tmp2[y, min(x + 1, W - 1)] - _tmp2[y, min(x + 1, W - 1)] * (
-                        1 - tmp1[max(y - 1, 0), min(x + 1, W - 1)]) * _tmp2[max(y - 1, 0), x])
+                            1 - tmp1[max(y - 1, 0), min(x + 1, W - 1)]) * _tmp2[max(y - 1, 0), x])
                 c += (_tmp2[max(y - 1, 0), x] - _tmp2[max(y - 1, 0), x] * _tmp2[max(y - 1, 0), max(x - 1, 0)] * _tmp2[
                     y, max(x - 1, 0)])
                 c += (_tmp2[y, max(x - 1, 0)] - _tmp2[y, max(x - 1, 0)] * _tmp2[min(y + 1, H - 1), max(x - 1, 0)] *
@@ -130,7 +121,7 @@ def hilditch(img):
                 c += (_tmp2[y, min(x + 1, W - 1)] - _tmp2[y, min(x + 1, W - 1)] * _tmp2[
                     max(y - 1, 0), min(x + 1, W - 1)] * _tmp2[max(y - 1, 0), x])
                 c += (_tmp2[max(y - 1, 0), x] - _tmp2[max(y - 1, 0), x] * _tmp2[max(y - 1, 0), max(x - 1, 0)] * (
-                        1 - tmp1[y, max(x - 1, 0)]))
+                            1 - tmp1[y, max(x - 1, 0)]))
                 c += ((1 - tmp1[y, max(x - 1, 0)]) - (1 - tmp1[y, max(x - 1, 0)]) * _tmp2[
                     min(y + 1, H - 1), max(x - 1, 0)] * _tmp2[min(y + 1, H - 1), x])
                 c += (_tmp2[min(y + 1, H - 1), x] - _tmp2[min(y + 1, H - 1), x] * _tmp2[
