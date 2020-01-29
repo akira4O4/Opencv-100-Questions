@@ -6,7 +6,6 @@
 
 void A61(Mat img)
 {
-	printf_s("---");
 	int H = img.rows;
 	int W = img.cols;
 	int channel = img.channels();
@@ -113,18 +112,18 @@ void A61(Mat img)
 		{
 			//printf_s("y:%d x:%d\n",y,x);
 			//如果是黑色则跳过
-			if (imgBin.at<uchar>(y, x) == 1)
+			if (imgBin.at<uchar>(y, x) == 0)
 				continue;
 			int c = 0;
-			c += (imgBin.at<uchar>(y, MIN(x + 1, W - 1)) - imgBin.at<uchar>(y, MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) *
-				imgBin.at<uchar>(
-					MAX(y - 1, 0), x));
+			c += (imgBin.at<uchar>(y, MIN(x + 1, W - 1)) - imgBin.at<uchar>(y, MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), MIN(x + 1, W - 1)) * imgBin.at<uchar>(MAX(y - 1, 0), x));
+
 			c += (imgBin.at<uchar>(MAX(y - 1, 0), x) - imgBin.at<uchar>(MAX(y - 1, 0), x) * imgBin.at<uchar>(MAX(y - 1, 0), MAX(x - 1, 0)) * imgBin.at<uchar>(
 				y, MAX(x - 1, 0)));
+
 			c += (imgBin.at<uchar>(y, MAX(x - 1, 0)) - imgBin.at<uchar>(y, MAX(x - 1, 0)) * imgBin.at<uchar>(MIN(y + 1, H - 1), MAX(x - 1, 0)) * imgBin.at<uchar>(
 				MIN(y + 1, H - 1), x));
-			c += (imgBin.at<uchar>(MIN(y + 1, H - 1), x) - imgBin.at<uchar>(MIN(y + 1, H - 1), x) * imgBin.at<uchar>(
-				MIN(y + 1, H - 1), MIN(x + 1, W - 1)) *
+
+			c += (imgBin.at<uchar>(MIN(y + 1, H - 1), x) - imgBin.at<uchar>(MIN(y + 1, H - 1), x) * imgBin.at<uchar>(MIN(y + 1, H - 1), MIN(x + 1, W - 1)) *
 				imgBin.at<uchar>(y, MIN(x + 1, W - 1)));
 
 			if (c == 0)
@@ -160,7 +159,7 @@ void A61(Mat img)
 
 		}
 	}
-
+	/*imwrite("imgout.jpg", imgOut);*/
 	cv::imshow("img", img);
 	cv::imshow("imgBin", imgBin);
 	cv::imshow("imgOut", imgOut);
