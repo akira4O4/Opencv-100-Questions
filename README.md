@@ -188,3 +188,31 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/零均归一化.png)
 ### 模式匹配-ncc zncc
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/ncc_zncc.png)
+
+# Opencv的100道题目
+## 61-70题的题目：
+### 61-70需要引入头文件：A_61_70.h
+- [4连接数(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A61.cpp "4连接数")
+- [4连接数(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A61.py "4连接数")
+- [8连接数(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A62.cpp "8连接数")
+- [8连接数(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A62.py "8连接数")
+- [细化处理(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A63.cpp "细化处理")
+- [细化处理(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A63.py "细化处理")
+- [Hilditch 细化算法(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A64.cpp "Hilditch 细化算法")
+- [Hilditch 细化算法(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A64.py "Hilditch 细化算法")
+- [Zhang-Suen细化算法(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A65.cpp "Zhang-Suen细化算法")
+- [Zhang-Suen细化算法(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A65.py "Zhang-Suen细化算法")
+- [HOG-梯度幅值・梯度方向(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A66.py "HOG-梯度幅值・梯度方向")
+- [HOG-梯度直方图(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A67.py "HOG-梯度直方图")
+- [HOG-直方图归一化(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A68.py "HOG-直方图归一化")
+- [HOG-可视化特征量(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A69.py "HOG-可视化特征量")
+- [色彩追踪（Color Tracking）(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A70.py "色彩追踪（Color Tracking）")
+## 61-70题重要算法解析：
+### 形态学梯度
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/4连通.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/8连通.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/HOG1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度2.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/9bin.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/block.png)
