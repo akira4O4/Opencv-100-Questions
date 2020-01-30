@@ -64,7 +64,6 @@ def hog(imggray):
             for j in range(n):
                 for i in range(n):
                     histogram[y, x, gradient_quantized[y * 4 + j, x * 4 + i]] += amplitude[y * 4 + j, x * 4 + i]
-
     epsilon = 1
     cell_n_h, cell_n_w, _ = histogram.shape
     for y in range(cell_n_h):
@@ -72,45 +71,24 @@ def hog(imggray):
             histogram[y, x] /= np.sqrt(np.sum(histogram[max(y - 1, 0): min(y + 2, cell_n_h),
                                               max(x - 1, 0): min(x + 2, cell_n_w)] ** 2) + epsilon)
 
-    # 绘制梯度图像
-    img_gray = rbg2gray(img)
-    H, W = gray.shape
-    cell_n_h, cell_n_w, _ = histogram.shape
-    out = img_gray[1: H + 1, 1: W + 1].copy().astype(np.uint8)
-    for y in range(cell_n_h):
-        for x in range(cell_n_w):
-            cx = x * n + n // 2
-            cy = y * n + n // 2
-            x1 = cx + n // 2 - 1
-            y1 = cy
-            x2 = cx - n // 2 + 1
-            y2 = cy
-
-            h = histogram[y, x] / np.sum(histogram[y, x])
-            h /= h.max()
-
-            for c in range(9):
-                # 获取角度
-                angle = (20 * c + 10) / 180. * np.pi
-                rx = int(np.sin(angle) * (x1 - cx) + np.cos(angle) * (y1 - cy) + cx)
-                ry = int(np.cos(angle) * (x1 - cx) - np.cos(angle) * (y1 - cy) + cy)
-                lx = int(np.sin(angle) * (x2 - cx) + np.cos(angle) * (y2 - cy) + cx)
-                ly = int(np.cos(angle) * (x2 - cx) - np.cos(angle) * (y2 - cy) + cy)
-
-                # color is HOG value
-                c = int(255. * h[c])
-
-                # 画线
-                cv2.line(out, (lx, ly), (rx, ry), (c, c, c), thickness=1)
-
     img = img.astype(np.uint8)
     cv2.imshow("img", img)
     cv2.imshow("out", out)
+
+    for i in range(9):
+        plt.subplot(3, 3, i + 1)
+        plt.imshow(histogram[..., i])
+        plt.axis('off')
+        plt.xticks(color="None")
+        plt.yticks(color="None")
+    plt.savefig("out.png")
+    plt.show()
+
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
     img = "C:/Users/Administrator/Desktop/OpencvTestImg/imori.jpg"
-    img1 = "C:/Users/Administrator/Desktop/OpencvTestImg/img512.png"
-    hog(img1)
+    img1 = "C:/Users/Administrator/Desktop/OpencvTestImg/img10.png"
+    hog(img)
