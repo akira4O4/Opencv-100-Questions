@@ -188,8 +188,6 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/零均归一化.png)
 ### 模式匹配-ncc zncc
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/ncc_zncc.png)
-
-# Opencv的100道题目
 ## 61-70题的题目：
 ### 61-70需要引入头文件：A_61_70.h
 - [4连接数(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A61.cpp "4连接数")
