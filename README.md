@@ -188,6 +188,7 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/零均归一化.png)
 ### 模式匹配-ncc zncc
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/ncc_zncc.png)
+
 ## 61-70题的题目：
 ### 61-70需要引入头文件：A_61_70.h
 - [4连接数(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A61.cpp "4连接数")
@@ -206,9 +207,11 @@
 - [HOG-可视化特征量(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A69.py "HOG-可视化特征量")
 - [色彩追踪（Color Tracking）(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A70.py "色彩追踪（Color Tracking）")
 ## 61-70题重要算法解析：
-### 形态学梯度
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/4连通.png)  
+### 4连通
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/4连通.png) 
+### 8连通
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/8连通.png)  
+### HOG
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/HOG1.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度1.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度2.png)  
