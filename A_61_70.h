@@ -6,6 +6,7 @@
 #define PI  atan(1) * 4
 
 using namespace cv;
+
 void A61(Mat img);
 void A62(Mat img);
 void A63(Mat img);
