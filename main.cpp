@@ -42,7 +42,7 @@ int main()
 	//A2();
 	//A3();
 	//A4();
-	//A5();
+	A5();
 	//A6();
 	//A7();
 	//A8();
@@ -92,7 +92,6 @@ int main()
 	//A62(img10);
 	//A63(words);
 	//A64(words);
-	A65(words);
+	//A65(words);
 
-	return 0;
 }
