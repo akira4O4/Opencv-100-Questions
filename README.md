@@ -209,10 +209,10 @@
 - [色彩追踪（Color Tracking）(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A70.py "色彩追踪（Color Tracking）")
 ## 61-70题重要算法解析：
 ### 形态学梯度
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/4连通.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/8连通.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/HOG1.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度1.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度2.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/9bin.png)
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/block.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/4连通.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/8连通.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/HOG1.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度1.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度2.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/9bin.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/block.png)  
