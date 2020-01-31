@@ -206,6 +206,7 @@
 - [HOG-直方图归一化(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A68.py "HOG-直方图归一化")
 - [HOG-可视化特征量(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A69.py "HOG-可视化特征量")
 - [色彩追踪（Color Tracking）(python)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A70.py "色彩追踪（Color Tracking）")
+- [色彩追踪（Color Tracking）(c++)](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A70.cpp "色彩追踪（Color Tracking）")
 ## 61-70题重要算法解析：
 ### 4连通
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/4连通.png) 
