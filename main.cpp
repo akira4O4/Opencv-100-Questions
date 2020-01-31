@@ -95,6 +95,7 @@ int main()
 	//A64(words);
 	//A65(words);
 	//A70(imori);
-	A71(imori);
+	//A71(imori);
+	A72(imori);
 
 }
