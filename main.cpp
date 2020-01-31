@@ -8,6 +8,7 @@
 #include "A_41_50.h"
 #include "A_51_60.h"
 #include "A_61_70.h"
+#include "A_71_80.h"
 
 using namespace std;
 using namespace cv;
@@ -93,6 +94,7 @@ int main()
 	//A63(words);
 	//A64(words);
 	//A65(words);
-	A70(imori);
+	//A70(imori);
+	A71(imori);
 
 }
