@@ -9,7 +9,7 @@ void A71(Mat img)
 {
 	int imgHeight = img.rows;
 	int imgWeight = img.cols;
-
+	int channel = img.channels();
 	Mat imgHSV = Mat::zeros(imgHeight, imgWeight, CV_32FC3);
 	Mat imgRGB = Mat::zeros(imgHeight, imgWeight, CV_8UC3);
 
@@ -56,7 +56,7 @@ void A71(Mat img)
 		}
 	}
 
-	Mat out = Mat::zeros(imgHeight, imgWeight, CV_8UC1);
+	Mat bin = Mat::zeros(imgHeight, imgWeight, CV_8UC1);
 	//À¶É«·¶Î§180 - 260
 	for (int y = 0; y < imgHeight; ++y)
 	{
@@ -64,66 +64,21 @@ void A71(Mat img)
 		{
 			int h = imgHSV.at<Vec3f>(y, x)[0];
 			if (h > 180 && h < 260)
-				out.at<uchar>(y, x) = 255;
+				bin.at<uchar>(y, x) = 0;
 			else
-				out.at<uchar>(y, x) = 0;
+				bin.at<uchar>(y, x) = 1;
 		}
 	}
-
-	//HSV->RGB
+	Mat out = Mat::zeros(imgHeight, imgWeight, CV_8UC3);
+	//out*imgsrc
 	for (int y = 0; y < imgHeight; ++y)
-	{
 		for (int x = 0; x < imgWeight; ++x)
-		{
-			H = imgHSV.at<Vec3f>(y, x)[0];
-			S = imgHSV.at<Vec3f>(y, x)[1];
-			V = imgHSV.at<Vec3f>(y, x)[2];
+			for (int c = 0; c < channel; ++c)
+				out.at<Vec3b>(y, x)[c] = img.at<Vec3b>(y, x)[c] * bin.at<uchar>(y, x);
 
-			C = S;
-			_H = H / 60;
-			X = C * (1 - abs(fmod((H / 60), 2) - 1));
-			R = G = B = V - C;
-
-			if (_H < 1)
-			{
-				R += C;
-				G += X;
-			}
-			else if (_H < 2)
-			{
-				R += X;
-				G += C;
-			}
-			else if (_H < 3)
-			{
-				G += C;
-				B += X;
-			}
-			else if (_H < 4)
-			{
-				G += X;
-				B += C;
-			}
-			else if (_H < 5)
-			{
-				R += X;
-				B += C;
-			}
-			else if (_H < 6)
-			{
-				R += C;
-				B += X;
-			}
-
-			imgRGB.at<cv::Vec3b>(y, x)[0] = (uchar)(B * 255);
-			imgRGB.at<cv::Vec3b>(y, x)[1] = (uchar)(G * 255);
-			imgRGB.at<cv::Vec3b>(y, x)[2] = (uchar)(R * 255);
-		}
-	}
 
 	imshow("img", img);
-	imshow("RGB-HSV", imgHSV);
-	imshow("HSV-RGB", imgRGB);
+	imshow("out", out);
 
 	waitKey(0);
 	destroyAllWindows();
