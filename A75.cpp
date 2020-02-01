@@ -64,15 +64,12 @@ void A75(Mat img)
 	}
 
 	int n = 6;
-	//使用vecto进行图片存储
-	std::vector<Mat> out(n);
-
+	char name[6][5] = { "out1","out2","out3","out4","out5","out6" };
 	for (int i=1;i<n+1;i++)
 	{
 		Mat out = Gaussian_Pyramid(imgGray, pow(0.5,i));
-		out.push_back(out);
+		imshow(name[i], out);
 	}
-
 	imshow("imgGray", imgGray);
 	waitKey(0);
 	destroyAllWindows();
