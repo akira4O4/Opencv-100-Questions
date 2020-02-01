@@ -3,92 +3,13 @@
 #include <opencv2/opencv.hpp>
 #include "A_71_80.h"
 using namespace cv;
-//开运算
-Mat Open(Mat img, int n)
-{
-	//开运算
-	//腐蚀
-	int imgHeight = img.rows;
-	int imgWeight = img.cols;
-	int channel = img.channels();
-
-	Mat tempImg;//作为对比图
-	Mat imgErode = img.clone();
-	for (int t = 0; t < n; ++t)
-	{
-		tempImg = imgErode.clone();
-		for (int y = 0; y < imgHeight; ++y)
-		{
-			for (int x = 0; x < imgWeight; ++x)
-			{
-				//对于待操作的像素(x,y)=0，(x, y-1)，(x-1, y)，(x+1, y)，(x, y+1)中不论哪一个不为255，令(x,y)=0。
-				if ((x > 0) && (tempImg.at<uchar>(y, x - 1) == 0))
-				{
-					imgErode.at<uchar>(y, x) = 0;
-					continue;
-				}
-				if ((y > 0) && (tempImg.at<uchar>(y - 1, x) == 0))
-				{
-					imgErode.at<uchar>(y, x) = 0;
-					continue;
-				}
-				if ((x < imgWeight - 1) && (tempImg.at<uchar>(y, x + 1) == 0))
-				{
-					imgErode.at<uchar>(y, x) = 0;
-					continue;
-				}
-				if ((y < imgHeight - 1) && (tempImg.at<uchar>(y + 1, x) == 0))
-				{
-					imgErode.at<uchar>(y, x) = 0;
-					continue;
-				}
-			}
-		}
-	}
-
-	//膨胀
-	Mat imgDilate = imgErode.clone();
-	for (int t = 0; t < n; ++t)
-	{
-		tempImg = imgDilate.clone();
-		for (int y = 0; y < imgHeight; ++y)
-		{
-			for (int x = 0; x < imgWeight; ++x)
-			{
-				//对于待操作的像素(x,y)=0，(x, y-1)，(x-1, y)，(x+1, y)，(x, y+1)中不论哪一个为255，令(x,y)=255。
-				if ((x > 0) && (tempImg.at<uchar>(y, x - 1) == 255))
-				{
-					imgDilate.at<uchar>(y, x) = 255;
-					continue;
-				}
-				if ((y > 0) && (tempImg.at<uchar>(y - 1, x) == 255))
-				{
-					imgDilate.at<uchar>(y, x) = 255;
-					continue;
-				}
-				if ((x < imgWeight - 1) && (tempImg.at<uchar>(y, x + 1) == 255))
-				{
-					imgDilate.at<uchar>(y, x) = 255;
-					continue;
-				}
-				if ((y < imgHeight - 1) && (tempImg.at<uchar>(y + 1, x) == 255))
-				{
-					imgDilate.at<uchar>(y, x) = 255;
-					continue;
-				}
-			}
-		}
-	}
-	return imgDilate;
-}
-//闭运算
-Mat Close(Mat img, int n)
+//膨胀
+Mat Dilate(Mat img, int n)
 {
 	int imgHeight = img.rows;
-	int imgWeight = img.cols;
+	int imgWidth = img.cols;
 	int channel = img.channels();
 
-	//膨胀
 	Mat imgDilate = img.clone();
 	Mat tempImg;//作为对比图
 	for (int t = 0; t < n; ++t)
@@ -96,7 +17,7 @@ Mat Close(Mat img, int n)
 		tempImg = imgDilate.clone();
 		for (int y = 0; y < imgHeight; ++y)
 		{
-			for (int x = 0; x < imgWeight; ++x)
+			for (int x = 0; x < imgWidth; ++x)
 			{
 				//对于待操作的像素(x,y)=0，(x, y-1)，(x-1, y)，(x+1, y)，(x, y+1)中不论哪一个为255，令(x,y)=255。
 				if ((x > 0) && (tempImg.at<uchar>(y, x - 1) == 255))
@@ -109,7 +30,7 @@ Mat Close(Mat img, int n)
 					imgDilate.at<uchar>(y, x) = 255;
 					continue;
 				}
-				if ((x < imgWeight - 1) && (tempImg.at<uchar>(y, x + 1) == 255))
+				if ((x < imgWidth - 1) && (tempImg.at<uchar>(y, x + 1) == 255))
 				{
 					imgDilate.at<uchar>(y, x) = 255;
 					continue;
@@ -119,17 +40,30 @@ Mat Close(Mat img, int n)
 					imgDilate.at<uchar>(y, x) = 255;
 					continue;
 				}
+
 			}
 		}
 	}
-	//腐蚀
-	Mat imgErode = imgDilate.clone();
+	return imgDilate;
+
+}
+
+//腐蚀
+Mat Erode(Mat img, int n)
+{
+	int imgHeight = img.rows;
+	int imgWidth = img.cols;
+	int channel = img.channels();
+
+	Mat imgErode = img.clone();
+	Mat tempImg;//作为对比图
+
 	for (int t = 0; t < n; ++t)
 	{
 		tempImg = imgErode.clone();
 		for (int y = 0; y < imgHeight; ++y)
 		{
-			for (int x = 0; x < imgWeight; ++x)
+			for (int x = 0; x < imgWidth; ++x)
 			{
 				//对于待操作的像素(x,y)=0，(x, y-1)，(x-1, y)，(x+1, y)，(x, y+1)中不论哪一个不为255，令(x,y)=0。
 				if ((x > 0) && (tempImg.at<uchar>(y, x - 1) == 0))
@@ -142,7 +76,7 @@ Mat Close(Mat img, int n)
 					imgErode.at<uchar>(y, x) = 0;
 					continue;
 				}
-				if ((x < imgWeight - 1) && (tempImg.at<uchar>(y, x + 1) == 0))
+				if ((x < imgWidth - 1) && (tempImg.at<uchar>(y, x + 1) == 0))
 				{
 					imgErode.at<uchar>(y, x) = 0;
 					continue;
@@ -152,10 +86,27 @@ Mat Close(Mat img, int n)
 					imgErode.at<uchar>(y, x) = 0;
 					continue;
 				}
+
 			}
 		}
 	}
 	return imgErode;
+}
+
+//开运算
+Mat Morphology_Opening(Mat img,int n)
+{
+	Mat out = Erode(img, n);
+	out = Dilate(out, n);
+	return out;
+}
+
+//闭运算
+Mat Morphology_Closing(Mat img, int n)
+{
+	Mat out = Dilate(img, n);
+	out = Erode(out, n);
+	return out;
 }
 
 
@@ -225,12 +176,25 @@ void A72(Mat img)
 		}
 	}
 
-	int n = 1;
-	bin = Close(bin, n);
-	bin = Open(bin, n);
+	Mat t = bin.clone();
+	for (int y = 0; y < imgHeight; ++y)
+		for (int x = 0; x < imgWeight; ++x)
+			t.at<uchar>(y, x) *= 255;
+	cv::imshow("t", t);
+
+	int n = 5;
+
+	bin = Morphology_Closing(bin, n);
+	bin = Morphology_Opening(bin, n);
+	
+	t = bin.clone();
+	for (int y = 0; y < imgHeight; ++y)
+		for (int x = 0; x < imgWeight; ++x)
+			t.at<uchar>(y, x) *= 255;
+	cv::imshow("_t", t);
 
 	Mat out = Mat::zeros(imgHeight, imgWeight, CV_8UC3);
-	//out*imgsrc
+	
 	for (int y = 0; y < imgHeight; ++y)
 		for (int x = 0; x < imgWeight; ++x)
 			for (int c = 0; c < channel; ++c)
