@@ -9,7 +9,7 @@ Mat GaussianPyramid(Mat img, float n)
 	int imgHeight = img.rows;
 	int imgWidth = img.cols;
 	int channel = img.channels();
-	//缩放比例
+	//缩小
 	double rx;
 	double ry;
 	rx = ry = n;
@@ -43,6 +43,7 @@ Mat GaussianPyramid(Mat img, float n)
 			}
 		}
 	}
+	//放大
 	return imgOut;
 }
 
@@ -63,23 +64,40 @@ void A76(Mat img)
 		}
 	}
 
-	int n = 6;
 	//使用vecto进行图片存储
-	std::vector<Mat> out(n);
+	int n = 6;
+	Mat imgOut[6];
 	char name[6][5] = { "out1","out2","out3","out4","out5","out6" };
-	for (int i = 1; i < n + 1; i++)
-	{
-		Mat out = GaussianPyramid(imgGray, pow(0.5, i));
-		imshow(name[i], out);
-		/*out.push_back(out);*/
-	}
+
 	for (int i = 0; i < n; i++)
 	{
-		
-		
+		Mat out = GaussianPyramid(imgGray, pow(0.5, i));
+		out = GaussianPyramid(out, pow(2, i));
+		imgOut[i] = out;
+	}
+	//display
+	imgHeight = imgOut[0].rows;
+	imgWidth = imgOut[0].cols;
+	Mat res = Mat::zeros(imgHeight, imgWidth, CV_8UC1);
+	//imshow(name[i], imgOut[i]);
+	//(0, 1)、(0, 3)、(0, 5)、(1, 4)、(2, 3)、(3, 5)
+
+	for (int y = 0; y < imgHeight; ++y)
+	{
+		for (int x = 0; x < imgWidth; ++x)
+		{
+			int val = 0;
+			val += std::abs(imgOut[0].at<uchar>(y, x) - imgOut[1].at<uchar>(y, x));
+			val += std::abs(imgOut[0].at<uchar>(y, x) - imgOut[3].at<uchar>(y, x));
+			val += std::abs(imgOut[0].at<uchar>(y, x) - imgOut[5].at<uchar>(y, x));
+			val += std::abs(imgOut[1].at<uchar>(y, x) - imgOut[4].at<uchar>(y, x));
+			val += std::abs(imgOut[2].at<uchar>(y, x) - imgOut[3].at<uchar>(y, x));
+			val += std::abs(imgOut[3].at<uchar>(y, x) - imgOut[5].at<uchar>(y, x));
+			res.at<uchar>(y, x) = val;
+		}
 	}
 
-
+	imshow("res", res);
 	imshow("imgGray", imgGray);
 	waitKey(0);
 	destroyAllWindows();
