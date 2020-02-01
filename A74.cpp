@@ -84,9 +84,9 @@ void A74(Mat img)
 			imgOut2.at<uchar>(y, x) = (uchar)val;
 		}
 	}
-	for (int y = 0; y < imgHeight; ++y)
+	for (int y = 0; y < imgOut2.rows; ++y)
 	{
-		for (int x = 0; x < imgWidth; ++x)
+		for (int x = 0; x < imgOut2.cols; ++x)
 		{
 			imgOut2.at<uchar>(y, x) = std::abs(imgOut2.at<uchar>(y, x) - imgGray.at<uchar>(y, x));
 		}
