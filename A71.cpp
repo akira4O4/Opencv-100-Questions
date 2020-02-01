@@ -69,6 +69,14 @@ void A71(Mat img)
 				bin.at<uchar>(y, x) = 1;
 		}
 	}
+	for (int y = 0; y < imgHeight; ++y)
+	{
+		for (int x = 0; x < imgWeight; ++x)
+		{
+			bin.at<uchar>(y, x) *= 255;
+		}
+	}
+	cv::imshow("_bin", bin);
 	Mat out = Mat::zeros(imgHeight, imgWeight, CV_8UC3);
 	//out*imgsrc
 	for (int y = 0; y < imgHeight; ++y)
