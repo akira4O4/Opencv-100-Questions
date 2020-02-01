@@ -15,7 +15,7 @@ void A26(Mat img)
 	//缩放比例
 	double rx;
 	double ry;
-	rx = ry = 2;
+	rx = ry =2;
 
 	//缩放后的宽高
 	int resizeHeight = (int)(imgHeight * ry);
