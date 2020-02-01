@@ -68,7 +68,7 @@ void A75(Mat img)
 	for (int i=1;i<n+1;i++)
 	{
 		Mat out = Gaussian_Pyramid(imgGray, pow(0.5,i));
-		imshow(name[i], out);
+		imshow(name[i - 1], out);
 	}
 	imshow("imgGray", imgGray);
 	waitKey(0);
