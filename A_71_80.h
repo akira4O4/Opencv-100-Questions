@@ -12,7 +12,7 @@ void A72(Mat img);
 void A73(Mat img);
 void A74(Mat img1);
 void A75(Mat img1);
-void A77(Mat img);
+void A76(Mat img);
 void A77(Mat img1);
 void A78(Mat img);
 void A79(Mat img);
