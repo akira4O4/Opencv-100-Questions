@@ -75,7 +75,7 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/直方图.png)
 
 ## 21-30题的题目：
-### 11-20需要引入头文件：A_21_30.h
+### 21-30需要引入头文件：A_21_30.h
 - [直方图归一化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A21.cpp "直方图归一化")
 - [方图操作](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A22.cpp "方图操作")
 - [直方图均衡化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A23.cpp "直方图均衡化")
