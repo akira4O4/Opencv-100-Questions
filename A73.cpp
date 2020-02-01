@@ -21,7 +21,6 @@ void A73(Mat img)
 		}
 	}
 
-	
 	//缩放比例
 	double rx;
 	double ry;
@@ -46,10 +45,10 @@ void A73(Mat img)
 			xBefore = fmin(xBefore, imgWidth - 1);
 			dx = x / rx - xBefore;
 
-			val = (1. - dx) * (1. - dy) * imgGray.at<uchar>(yBefore, xBefore) +
-				dx * (1. - dy) * imgGray.at<uchar>(yBefore, xBefore + 1) +
-				(1. - dx) * dy * imgGray.at<uchar>(yBefore + 1, xBefore) +
-				dx * dy * imgGray.at<uchar>(yBefore + 1, xBefore);
+			val = (1. - dx) * (1. - dy) * imgOut1.at<uchar>(yBefore, xBefore) +
+				dx * (1. - dy) * imgOut1.at<uchar>(yBefore, MIN(xBefore + 1, imgWidth - 1)) +
+				(1. - dx) * dy * imgOut1.at<uchar>(MIN(yBefore + 1, imgHeight - 1), xBefore) +
+				dx * dy * imgOut1.at<uchar>(MIN(yBefore + 1, imgHeight - 1), xBefore);
 			imgOut1.at<uchar>(y, x) = (uchar)val;
 		}
 	}
@@ -59,7 +58,7 @@ void A73(Mat img)
 	//放大两倍
 	imgHeight = imgOut1.rows;
 	imgWidth = imgOut1.cols;
-	rx = ry = 1.4;
+	rx = ry = 2;
 	resizeHeight = (int)(imgHeight * ry);
 	resizeWidth = (int)(imgWidth * rx);
 	Mat imgOut2 = Mat::zeros(resizeHeight, resizeWidth, CV_8UC1);
@@ -74,6 +73,7 @@ void A73(Mat img)
 
 		for (int x = 0; x < resizeWidth; ++x)
 		{
+			printf_s("%d %d\n",y,x);
 			xBefore = (int)floor(x / rx);
 			xBefore = fmin(xBefore, imgWidth - 1);
 			dx = x / rx - xBefore;
@@ -85,6 +85,7 @@ void A73(Mat img)
 			imgOut2.at<uchar>(y, x) = (uchar)val;
 		}
 	}
+
 	imshow("imgOut2", imgOut2);
 	imshow("imgSrc", img);
 	waitKey(0);
