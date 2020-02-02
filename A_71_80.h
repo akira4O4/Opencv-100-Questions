@@ -13,8 +13,8 @@ void A73(Mat img);
 void A74(Mat img1);
 void A75(Mat img1);
 void A76(Mat img);
-void A77(Mat img1);
-void A78(Mat img);
+void A77();
+void A78();
 void A79(Mat img);
 void A80(Mat img);
 #endif 
