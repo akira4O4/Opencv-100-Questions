@@ -6,7 +6,7 @@
 using namespace cv;
 
 
-void A77(Mat)
+void A77()
 {
 	int sigma = 10;//·½²î
 	int gamma = 1.2;//Ù¤Âí
@@ -43,7 +43,7 @@ void A77(Mat)
 			
 		}
 	}
-	printf_s("%d,%d\n",max,min);
+	printf_s("%f,%f\n",max,min);
 
 	for (int y = 0; y < kSize; y++) 
 	{
