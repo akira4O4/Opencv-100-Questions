@@ -102,6 +102,7 @@ int main()
 	//A75(imori);
 	//A76(imori);
 	//A77();
-	A78();
+	//A78();
+	A79(imori);
 
 }
