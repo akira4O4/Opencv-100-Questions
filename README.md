@@ -75,7 +75,7 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/直方图.png)
 
 ## 21-30题的题目：
-### 21-30需要引入头文件：A_21_30.h
+### 11-20需要引入头文件：A_21_30.h
 - [直方图归一化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A21.cpp "直方图归一化")
 - [方图操作](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A22.cpp "方图操作")
 - [直方图均衡化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A23.cpp "直方图均衡化")
@@ -218,3 +218,28 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度2.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/9bin.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/block.png)  
+## 71-80题的题目：
+### 71-80题需要引入头文件：A_71_80.h
+- [掩膜（Masking）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A71.cpp "掩膜（Masking）")
+- [掩膜（色彩追踪（Color Tracking）+形态学处理）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A72.cpp "掩膜（色彩追踪（Color Tracking）+形态学处理）")
+- [缩小和放大](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A73.cpp "缩小和放大")
+- [使用差分金字塔提取高频成分](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A74.cpp "使用差分金字塔提取高频成分")
+- [高斯金字塔（Gaussian Pyramid）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A75.cpp "高斯金字塔（Gaussian Pyramid）")
+- [显著图（Saliency Map）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A76.cpp "显著图（Saliency Map）")
+- [Gabor 滤波器（Gabor Filter）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A77.cpp "Gabor 滤波器（Gabor Filter）")
+- [旋转Gabor滤波器](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A78.cpp "旋转Gabor滤波器")
+- [使用Gabor滤波器进行边缘检测](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A79.cpp "使用Gabor滤波器进行边缘检测")
+- [使用Gabor滤波器进行特征提取](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A80.py "使用Gabor滤波器进行特征提取")  
+## 71-80题重要算法解析：
+#### 三角函数+高斯分布
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/三角函数_高斯分布.png)   
+### gabor滤波器
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor滤波器.png)  
+### gabor实数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor实数.png)  
+### gabor虚数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor虚数.png)  
+### gabor复数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor复数.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor1.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor3.png)  
