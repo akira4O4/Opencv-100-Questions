@@ -35,44 +35,52 @@ def sobel(img):
     return Ix2, Iy2, Ixy
 
 
-# 角检测
-def corner_detect(img, Ix2, Iy2, Ixy):
-    H, W = img.shape
-    out = np.array((img, img, img))
-    # x,y,z=0,1,2
-    # transpose:调换维度
-    out = np.transpose(out, (1, 2, 0))
+# 对进过sobel滤波的图像进行高斯滤波
+def gausian(i, k_size, sigma):
+    H, W = i.shape
 
-    hes = np.zeros((H, W))
+    I_tmp = np.pad(i,(k_size // 2, k_size // 2), 'edge')
+
+    # 滤波器
+    k = np.zeros((k_size, k_size), dtype=np.float)
+
+    for x in range(k_size):
+        for y in range(k_size):
+            _x = x - k_size // 2
+            _y = y - k_size // 2
+            # 二维高斯滤波器函数
+            k[y, x] = np.exp(-(_x ** 2 + _y ** 2) / (2 * (sigma ** 2)))
+    k /= (sigma * np.sqrt(2 * np.pi))
+    k /= k.sum()
+
     for y in range(H):
         for x in range(W):
-            hes[y, x] = Ix2[y, x] * Iy2[y, x] * Ixy[y, x] ** 2
+            i[y, x] = np.sum(I_tmp[y: y + k_size, x: x + k_size] * k)
 
-    for y in range(H):
-        for x in range(W):
-            # 在y,x8邻域内为最大值并且大于max(det(H))*0.1$的点。
-            if hes[y, x] == np.max(hes[max(y - 1, 0): min(y + 2, H), max(x - 1, 0): min(x + 2, W)]) and hes[
-                y, x] > np.max(hes) * 0.1:
-                out[y, x] = [0, 0, 255]#着色
-
-    out = out.astype(np.uint8)
-    return out
+    return i
 
 
-def hessian(img):
+def harris(img):
     img = cv2.imread(img).astype(np.float32)
     # 灰度化
     gray = rgb2gray(img)
 
     Ix2, Iy2, Ixy = sobel(gray)
 
-    out = corner_detect(gray, Ix2, Iy2, Ixy)
+    Ix2 = gausian(Ix2, 3, 3)
+    Iy2 = gausian(Iy2, 3, 3)
+    Ixy = gausian(Ixy, 3, 3)
 
-    cv2.imshow("out", out)
+    # Ix2=Ix2.astype(np.uint8)
+    # Iy2=Iy2.astype(np.uint8)
+    # Ixy=Ixy.astype(np.uint8)
+
+    cv2.imshow("Ix2", Ix2)
+    cv2.imshow("Iy2", Iy2)
+    cv2.imshow("Ixy", Ixy)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-
 img = "C:/Users/Administrator/Desktop/OpencvTestImg/thorino.jpg"
 if __name__ == "__main__":
-    hessian(img)
+    harris(img)
