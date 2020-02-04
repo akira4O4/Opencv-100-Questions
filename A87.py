@@ -46,7 +46,6 @@ def get_db():
 
 
 def test_DB(db, pdb, N):
-    # get test image path
     test = glob("testset/test_*.png")
     test.sort()
 
@@ -79,7 +78,6 @@ def test_DB(db, pdb, N):
             print(pdb[i], end=', ')
         print("|猜测是 ：", pl)
 
-        # count accuracy
         gt = "cat" if "cat" in path else "dog"
         if gt == pl:
             accuracy_N += 1.
