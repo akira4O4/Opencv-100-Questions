@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+
 # 灰度化
 def rgb2gray(img):
     gray = 0.2126 * img[..., 2] + 0.7152 * img[..., 1] + 0.0722 * img[..., 0]
@@ -49,9 +50,10 @@ def corner_detect(img, Ix2, Iy2, Ixy):
 
     for y in range(H):
         for x in range(W):
+            # 在y,x8邻域内为最大值并且大于max(det(H))*0.1$的点。
             if hes[y, x] == np.max(hes[max(y - 1, 0): min(y + 2, H), max(x - 1, 0): min(x + 2, W)]) and hes[
                 y, x] > np.max(hes) * 0.1:
-                out[y, x] = [0, 0, 255]
+                out[y, x] = [0, 0, 255]#着色
     return out
 
 
