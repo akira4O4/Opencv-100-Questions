@@ -77,7 +77,7 @@ def test_DB(db, pdb):
         elif pred == 1:
             pl = "dog"
 
-        print(path, "is similar >>", pdb[pred_i], " Pred >>", pl)
+        print(path, "像 ", pdb[pred_i], " 猜测是 ：", pl)
 
 
 if __name__ == "__main__":
