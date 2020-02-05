@@ -7,12 +7,9 @@
 
 using namespace cv;
 
-#define PI acos(-1)//圆周率
 //计时
 clock_t start, stop;
 double duration;
-
-
 
 Mat Gray(Mat img)
 {
