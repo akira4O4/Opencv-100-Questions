@@ -71,6 +71,7 @@ int main()
 	//A30(imgSrc512);
 	//A31(imgSrc128);
 	//A32(imgSrc128);
+	A33(imgSrc128);
 	//A41(imgSrc512);
 	//A42(imgSrc512);
 	//A43(img_canny);
@@ -103,6 +104,6 @@ int main()
 	//A76(imori);
 	//A77();
 	//A78();
-	A79(imori);
+	//A79(imori);
 
 }
