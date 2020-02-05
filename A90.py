@@ -39,7 +39,7 @@ def get_db():
 
 # 这里需要大量的数据，数据越少，准确率越低
 # 设置阈值可调：th
-def k_means(db, pdb, Class=2, th=0.5):
+def k_means(db, pdb, Class=2, th=0.2):
     feats = db.copy()
     # 随机种子
     np.random.seed(1)
@@ -79,4 +79,4 @@ def k_means(db, pdb, Class=2, th=0.5):
 
 if __name__ == "__main__":
     db, pdb = get_db()
-    k_means(db, pdb, 0.3)
+    k_means(db, pdb)
