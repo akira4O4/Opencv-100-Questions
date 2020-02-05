@@ -218,6 +218,7 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像梯度2.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/9bin.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/block.png)  
+
 ## 71-80题的题目：
 ### 71-80题需要引入头文件：A_71_80.h
 - [掩膜（Masking）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A71.cpp "掩膜（Masking）")
@@ -243,3 +244,33 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor复数.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor1.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/gabor3.png)  
+
+## 81-90题的题目：
+- [Hessian角点检测](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A81.cpp "Hessian角点检测")
+- [Harris角点检测第一步：Sobel + Gausian）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A82.cpp "Harris角点检测第一步：Sobel + Gausian")
+- [Harris角点检测第二步：角点检测](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A83.cpp "Harris角点检测第二步：角点检测")
+- [简单图像识别第一步：减色化+柱状图^3](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A84.cpp "简单图像识别第一步：减色化+柱状图^3")
+- [简单图像识别第二步：判别类别](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A85.cpp "简单图像识别第二步：判别类别")
+- [简单图像识别第三步：评估](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A86.cpp "简单图像识别第三步：评估")
+- [简单图像识别第四步：k-NN](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A87.cpp "简单图像识别第四步：k-NN")
+- [k-平均聚类算法 第一步：生成质心](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A88.cpp "k-平均聚类算法第一步：生成质心")
+- [k-平均聚类算法 第二步：聚类](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A89.cpp "k-平均聚类算法第二步：聚类")
+- [k-平均聚类算法 第三步：调整初期类别](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A90.py "k-平均聚类算法 第三步：调整初期类别")  
+## 81-90题重要算法解析：
+#### Hessian矩阵
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/Hessian矩阵.png)   
+### 高斯滤波_Hessian矩阵
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/高斯滤波_Hessian矩阵.png)  
+### 图像一阶导数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像一阶导数.png)  
+### 图像二阶导数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像二阶导数.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/结果.png)  
+### 距离函数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/距离函数.png)  
+### KNN
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/KNN.png)  
+### kmeans_dis
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/kmeans_dis.png) 
+### 质心
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/质心.png) 
