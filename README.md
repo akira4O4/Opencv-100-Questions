@@ -259,7 +259,7 @@
 ## 81-90题重要算法解析：
 #### Hessian矩阵
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/Hessian矩阵.png)   
-### 高斯滤波_Hessian矩阵
+### 高斯滤波+Hessian矩阵
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/高斯滤波_Hessian矩阵.png)  
 ### 图像一阶导数
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像一阶导数.png)  
