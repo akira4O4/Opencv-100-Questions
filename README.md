@@ -265,6 +265,7 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像一阶导数.png)  
 ### 图像二阶导数
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/图像二阶导数.png)  
+### result
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/结果.png)  
 ### 距离函数
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/距离函数.png)  
