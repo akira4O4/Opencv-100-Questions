@@ -70,7 +70,7 @@ void A34(Mat img)
 
 	printf_s("傅里叶变换计算完成\n");
 
-	//低通滤波
+	//高通滤波
 	int r = imgHeight / 2;
 	double pass_r = 0.5;
 	int filter_d = (int)((double)r * pass_r);
