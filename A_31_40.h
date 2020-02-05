@@ -4,6 +4,8 @@
 #define _A_31_40_
 using namespace cv;
 
+#define PI acos(-1)//Ô²ÖÜÂÊ
+
 void A31(Mat img);
 void A32(Mat img);
 void A33(Mat img);
