@@ -2,6 +2,7 @@
 #include <opencv2/opencv.hpp>
 #ifndef _A_31_40_
 #define _A_31_40_
+
 using namespace cv;
 
 #define PI acos(-1)//Ô²ÖÜÂÊ
