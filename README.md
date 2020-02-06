@@ -128,7 +128,7 @@
 - [YCbCr 色彩空间](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A39.cpp "YCbCr 色彩空间")
 - [YCbCr+离散余弦变换+量化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A40.cpp "YCbCr+离散余弦变换+量化")
 
-## 41-50题重要算法解析：
+## 31-40题重要算法解析：
 ### 傅里叶级数
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/傅里叶级数1.png)
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/傅里叶级数2.png)
