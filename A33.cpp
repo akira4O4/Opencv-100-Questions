@@ -45,7 +45,7 @@ void A33(Mat img)
 	//在对于二维图片，需要进行两个方向上的傅里叶变换
 	for (int y = 0; y < imgHeight; ++y)
 	{
-		printf_s("傅里叶变换第y:%d行\n", y);
+		//printf_s("傅里叶变换第y:%d行\n", y);
 		for (int x = 0; x < imgWidth; ++x)
 		{
 			i.real(0);
