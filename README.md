@@ -116,7 +116,7 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换4.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/放射变换5.png)
 ## 31-40题的题目：
-### 11-20需要引入头文件：A_31_40.h
+### 31-40需要引入头文件：A_31_40.h
 - [仿射变换（Afine Transformations）——倾斜](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A31.cpp "仿射变换（Afine Transformations）——倾斜")
 - [傅立叶变换](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A32.cpp "傅立叶变换")
 - [傅立叶变换——低通滤波](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A33.cpp "傅立叶变换——低通滤波")
