@@ -72,7 +72,8 @@ int main()
 	//A31(imgSrc128);
 	//A32(imgSrc128);
 	//A33(imgSrc128);
-	A34(imgSrc128);
+	//A34(imgSrc128);
+	A35(imgSrc128);
 	//A41(imgSrc512);
 	//A42(imgSrc512);
 	//A43(img_canny);
