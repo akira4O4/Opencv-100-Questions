@@ -116,8 +116,37 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/仿射变换4.png)  
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/放射变换5.png)
 ## 31-40题的题目：
-# 暂无
-### 11-20需要引入头文件：A_31_40.h
+### 31-40需要引入头文件：A_31_40.h
+- [仿射变换（Afine Transformations）——倾斜](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A31.cpp "仿射变换（Afine Transformations）——倾斜")
+- [傅立叶变换](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A32.cpp "傅立叶变换")
+- [傅立叶变换——低通滤波](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A33.cpp "傅立叶变换——低通滤波")
+- [傅立叶变换——高通滤波](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A34.cpp "傅立叶变换——高通滤波")
+- [傅立叶变换——带通滤波](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A35.cpp "傅立叶变换——带通滤波")
+- [霍夫变换：直线检测-霍夫逆变换](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A36.cpp "霍夫变换：直线检测-霍夫逆变换")
+- [离散余弦变换](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A37.cpp "离散余弦变换")
+- [离散余弦变换+量化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A38.cpp "离散余弦变换+量化")
+- [YCbCr 色彩空间](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A39.cpp "YCbCr 色彩空间")
+- [YCbCr+离散余弦变换+量化](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A40.cpp "YCbCr+离散余弦变换+量化")
+
+## 31-40题重要算法解析：
+### 傅里叶级数
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/傅里叶级数1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/傅里叶级数2.png)
+### 欧拉公式
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/欧拉公式.png)
+### 傅里叶变换
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/傅里叶变换2.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/傅里叶变换1.png)
+### 二维离散余弦变换
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/二维离散余弦变换1.png)
+### 均方误差
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/均方误差.png)
+### 均方误差
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/均方误差.png)
+### YCbCr色彩空间
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/YCbCr_1.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/YCbCr_2.png)
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/YCbCr_3.png)
 
 ## 41-50题的题目：
 ### 41-50需要引入头文件：A_41_50.h
