@@ -27,8 +27,9 @@ def k_means(img, Class=5):
 
     i = np.random.choice(np.arange(H * W), Class, replace=False)
     print(i)
+    # 获取对应像素点的rgb值
     Cs = img[i].copy()
-    print(Cs)
+    print("->", Cs)
 
     clss = np.zeros((H * W), dtype=int)
 
