@@ -304,3 +304,29 @@
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/kmeans_dis.png) 
 ### 质心
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/质心.png) 
+
+## 91-100题的题目：
+- [平均聚类算法-按颜色距离分类](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A91.cpp "平均聚类算法-按颜色距离分类")
+- [平均聚类算法-减色处理](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A92.cpp "平均聚类算法-减色处理n")
+- [计算IoU](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A93.cpp "计算IoU")
+
+- [随机裁剪（Random Cropping）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A94.cpp "随机裁剪（Random Cropping）")
+
+- [深度学习（Deep Learning）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A95.cpp "深度学习（Deep Learning）")
+
+- [神经网络（Neural Network）第二步——训练](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A96.cpp "神经网络（Neural Network）第二步——训练")
+
+- [简单物体检测第一步----滑动窗口（Sliding Window）+HOG](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A97.cpp "简单物体检测第一步----滑动窗口（Sliding Window）+HOG")
+
+- [简单物体检测第二步——滑动窗口（Sliding Window）+ NN](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A98.cpp "简单物体检测第二步——滑动窗口（Sliding Window）+ NN")
+
+- [简单物体检测第三步——非极大值抑制（Non-Maximum Suppression）](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A99.cpp "简单物体检测第三步——非极大值抑制（Non-Maximum Suppression）")
+
+- [简单物体检测第四步——评估（Evaluation）：Precision、Recall、F-Score、mAP](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/A100.py "简单物体检测第四步——评估（Evaluation）：Precision、Recall、F-Score、mAP")  
+
+## 91-100题重要算法解析：
+#### IOU
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/IOU1.png) 
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/IOU2.png) 
+#### NMS：非极大值抑制
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/NMS.png) 
