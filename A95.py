@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 
 
 # 激活函数
@@ -79,6 +80,7 @@ def test_nn(nn, test_x, test_t):
 
 
 if __name__ == "__main__":
+
     # 训练数据
     train_x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=np.float32)
 
