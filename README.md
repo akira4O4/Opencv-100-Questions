@@ -326,7 +326,7 @@
 
 ## 91-100题重要算法解析：
 #### IOU
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/IOU1.png) 
-![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/IOU2.png) 
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/IOU1.png)  
+![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/IOU2.png)  
 #### NMS：非极大值抑制
 ![GitHub set up](https://github.com/omega-Lee/Opencv-100-Questions/blob/master/images/NMS.png) 
